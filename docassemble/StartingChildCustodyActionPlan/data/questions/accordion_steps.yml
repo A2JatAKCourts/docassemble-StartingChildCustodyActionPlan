@@ -21,6 +21,7 @@ code: |
   if user_need in ('none', 'divorce'):
     step_list.append((wrong_tf, "wrong_tf_idx"))
     step_list.append((wrong_tf2, "wrong_tf2_idx"))
+    step_list.append((get_help, "get_help_idx"))
   
   else:
     if not jurisdiction:
