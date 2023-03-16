@@ -64,10 +64,9 @@ content: |
   * [Asking for Child Support](https://docassemble.akcourts.gov/start/AskingForChildSupport)
   * [Starting A Case to End Your Marriage](https://LegalNav.org/guided_assistant/starting-a-case-to-end-your-marriage/?location=alaska)
   * [Responding if Your Spouse Starts a Case to End Your Marriage](https://LegalNav.org/guided_assistant/responding-if-your-spouse-wants-to-or-starts-a-case-to-end-your-marriage/?location=alaska)
-  * [Starting a Custody Case](https://LegalNav.org/guided_assistant/starting-a-custody-case/?location=alaska)
   * [Responding if Your Spouse Starts a Custody Case](https://LegalNav.org/guided_assistant/responding-if-your-spouse-wants-to-or-starts-a-custody-case/?location=Alaska)
-  * [Enforcing a Custody Order](https://LegalNav.org/guided_assistant/enforcing-a-custody-order/?location=alaska)
-  * [Changing a Custody Order](https://LegalNav.org/guided_assistant/changing-a-custody-order/?location=alaska)
+  * [Enforcing a Custody Order](https://docassemble.akcourts.gov/start/docassemble-ChangingChildCustody )
+  * [Changing a Custody Order](https://docassemble.akcourts.gov/start/docassemble-ChangingChildCustody )
 --- 
 template: wrong_tf2
 subject: | 
