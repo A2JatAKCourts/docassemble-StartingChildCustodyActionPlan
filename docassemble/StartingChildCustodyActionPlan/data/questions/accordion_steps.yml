@@ -93,7 +93,7 @@ content: |
 ---
 template: alternate_service_step
 subject: |
-  Step ${ alternate_service__idx }: Starting a case when you don't know where the other parent is
+  Step ${ alternate_service_idx }: Starting a case when you don't know where the other parent is
 content: |
   <p>Usually when you start a case you must give the other parent  every form you file with the court.  This  is called "service."  If you don't know  where the other parent is you can ask the court to let you use "alternate  service," which is described below.</p>
   <h3>After you start your case by filing a complaint and other documents, and  can't serve the other parent, ask the court to let you use alternate service.</h3>
