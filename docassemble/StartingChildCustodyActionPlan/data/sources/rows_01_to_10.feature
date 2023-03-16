@@ -9,7 +9,7 @@ Scenario: Row #1
       | user_need | none |  |    
     And I take a screenshot
     And I should see the phrase "Try another Guided Assistant"  
-    And I should see the phrase "Look at the court's self-help web pages"
+    And I should see the phrase "Look at the court’s self-help web pages"
     And I should see the phrase "Get more information or help"
     And I download "starting_child_custody_action_plan.pdf"    
 
@@ -20,7 +20,7 @@ Scenario: Row #2
       | user_need | divorce |  |    
     And I take a screenshot
     And I should see the phrase "Try another Guided Assistant"  
-    And I should see the phrase "Look at the court's self-help web pages"
+    And I should see the phrase "Look at the court’s self-help web pages"
     And I should see the phrase "Get more information or help"
     And I download "starting_child_custody_action_plan.pdf"
 
@@ -29,8 +29,8 @@ Scenario: Row #3
     And I get to the question id "final screen" with this data:
       | var | value | trigger |
       | user_need | custody |  |    
-      | jurisdiction | True |  |    
-      | add_jurisdiction_info_to_plan | True |  |    
+      | jurisdiction | False |  | 
+      | add_jurisdiction_info_to_plan | True |  |
       | alternate_service | True |  |    
       | paternity | True |  |       
       | which_forms | agree |  |    
