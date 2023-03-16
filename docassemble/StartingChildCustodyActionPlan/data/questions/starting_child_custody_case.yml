@@ -66,18 +66,19 @@ code: |
   # nav.set_section("review_Starting_Child_Custody_Action_Plan")
   # user_role = "plaintiff"
   # user_ask_role = "plaintiff"
-  user_need
-  children_lived_in_AK
-  Asking_the_court_for_a_custody_order
-  Does_AK_have_jurisdiction
-  alternate_service
-  set_progress(20)
-  paternity
-  Default
-  parents_agree
-  set_progress(40)
-  domestic_violence
-  serve
+  #  user_need
+  #  children_lived_in_AK
+  #  Asking_the_court_for_a_custody_order
+  #  Does_AK_have_jurisdiction
+  #  alternate_service
+  #  set_progress(20)
+  #  paternity
+  #  Default
+  #  parents_agree
+  #  set_progress(40)
+  #  domestic_violence
+  #  serve
+  # get_steps
   interview_order_starting_child_custody_case = True
 ---
 ###################### Main order ######################
@@ -194,7 +195,7 @@ choices:
 ---
 id: Domestic violence
 question: |
-  If there is abuse or domestic violence between you and the other parent it may affect your case and the parenting plan.
+  If there is abuse or domestic violence between you and the other parent it may affect your case and the parenting plan
 subquestion: |
   Do you want your Action Plan to include information about how domestic violence affects your case?
 yesno: domestic_violence
@@ -206,18 +207,18 @@ under: |
   The law presumes that a parent with a "history of domestic violence" may not get custody and unsupervised visitation without completing some court-approved treatment.  The parent’s domestic violence behavior needs to fit under one of the domestic violence crimes in the law.  A "history of domestic violence" is defined as one incident that caused serious physical injury, or more than one incident.  The court can find domestic violence based on one parent’s testimony even if there was no protective order or criminal case. 
   % endif
 ---
-id: Catch all screen for these variables
-question: |
-  Catch all screen for these variables
-subquestion: |
-  somehow these got missed - need to move them to different screens
-fields:
-  - "Serve": serve
-  - "Contested complaint": contested_complaint
-  - "Agree": agree
-  - "Contested": contested
-  - "User need": user_need
-  - "File": file
+#  id: Catch all screen for these variables
+#  question: |
+#    Catch all screen for these variables
+#  subquestion: |
+#    somehow these got missed - need to move them to different screens
+#  fields:
+#    - "Serve": serve
+#    - "Contested complaint": contested_complaint
+#    - "Agree": agree
+#    - "Contested": contested
+#    - "User need": user_need
+#    - "File": file
 ---
 id: preview Starting_Child_Custody_Action_Plan
 question: |
@@ -288,34 +289,35 @@ review:
       **Read drpo**:
       ${ read_drpo }
 ---
-id: download starting child custody action plan
-event: confirmation_and_download
-question: |
-  All done
-subquestion: |
-  Thank you ${users}. Your form is ready to download and deliver.
-  
-  View, download and send your form below. Click the "Edit answers" button to fix any mistakes.
-
-  ${ action_button_html(url_action('review_Starting_Child_Custody_Action_Plan'), label='Edit answers', color='info') }
-  
-  
-  ${ al_user_bundle.download_list_html() }
-  
-
-  ${ al_user_bundle.send_button_html(show_editable_checkbox=True) }
-
-progress: 100
+#  id: download starting child custody action plan
+#  event: confirmation_and_download
+#  question: |
+#    All done
+#  subquestion: |
+#    Thank you ${users}. Your form is ready to download and deliver.
+#    
+#    View, download and send your form below. Click the "Edit answers" button to fix any mistakes.
+#  
+#    ${ action_button_html(url_action('review_Starting_Child_Custody_Action_Plan'), label='Edit answers', color='info') }
+#    
+#    
+#    ${ al_user_bundle.download_list_html() }
+#    
+#  
+#    ${ al_user_bundle.send_button_html(show_editable_checkbox=True) }
+#  
+#  progress: 100
 ---
 # ALDocument objects specify the metadata for each template
 objects:
 #  - Starting_Child_Custody_Action_Plan_Post_interview_instructions: ALDocument.using(title="Instructions", filename="Starting_Child_Custody_Action_Plan_next_steps.docx", enabled=True, has_addendum=False)
-  - Starting_Child_Custody_Action_Plan_attachment: ALDocument.using(title="Ask the court for a child custody or Parenting Plan order", filename="Starting_Child_Custody_Action_Plan", enabled=True, has_addendum=False, )
+  - starting_child_custody_action_plan_attachment: ALDocument.using(title="Ask the court for a child custody or Parenting Plan order", filename="starting_child_custody_action_plan", enabled=True, has_addendum=False, )
 ---
 # Bundles group the ALDocuments into separate downloads, such as for court and for the user
 objects:
- #  - al_user_bundle: ALDocumentBundle.using(elements=[Starting_Child_Custody_Action_Plan_Post_interview_instructions, Starting_Child_Custody_Action_Plan_attachment], filename="Starting_Child_Custody_Action_Plan", title="All forms to download for your records", enabled=True)
-  - al_recipient_bundle: ALDocumentBundle.using(elements=[starting_child_custody_action_plan_attachment],  filename="starting_child_custody_action_plan", title="All forms to file", enabled=True)
+# - al_user_bundle: ALDocumentBundle.using(elements=[Starting_Child_Custody_Action_Plan_Post_interview_instructions, starting_child_custody_action_plan_attachment], filename="starting_child_custody_action_plan", title="All forms to download for your records", enabled=True)
+ - al_user_bundle: ALDocumentBundle.using(elements=[starting_child_custody_action_plan_attachment], filename="starting_child_custody_action_plan", title="All forms to download for your records", enabled=True)
+ - al_recipient_bundle: ALDocumentBundle.using(elements=[starting_child_custody_action_plan_attachment],  filename="starting_child_custody_action_plan", title="All forms to file", enabled=True)
 ---
 # Each attachment defines a key in an ALDocument. We use `i` as the placeholder here so the same template is 
 # used for "preview" and "final" keys, and logic in the template checks the value of 
