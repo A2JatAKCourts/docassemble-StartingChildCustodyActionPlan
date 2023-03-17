@@ -30,7 +30,24 @@ Scenario: Row #3
       | var | value | trigger |
       | user_need | custody |  |    
       | jurisdiction | False |  | 
-      | add_jurisdiction_info_to_plan | True |  |
+      | add_jurisdiction_info_to_plan | stop |  |
+      | alternate_service | True |  |    
+      | paternity | True |  |       
+      | which_forms | agree |  |    
+      | default | True |  |    
+      | domestic_violence | True |  |    
+    And I take a screenshot
+    And I should see the phrase "Make sure that the Alaska court has the authority to change the order Or Check if Alaska has jurisdiction"
+    And I should see the phrase "Get more information or help"
+    And I download "starting_child_custody_action_plan.pdf"
+    
+Scenario: Row #4
+    Given I start the interview at "starting_child_custody_case.yml"
+    And I get to the question id "final screen" with this data:
+      | var | value | trigger |
+      | user_need | custody |  |    
+      | jurisdiction | False |  | 
+      | add_jurisdiction_info_to_plan | go |  |
       | alternate_service | True |  |    
       | paternity | True |  |       
       | which_forms | agree |  |    

@@ -25,34 +25,67 @@ code: |
   
   else:
     if not jurisdiction:
-      if add_jurisdiction_info_to_plan:
+      if add_jurisdiction_info_to_plan == 'stop':
         step_list.append((jurisdiction_step, "jurisdiction_idx"))
+        step_list.append((get_help, "get_help_idx"))
+      else:
+        step_list.append((jurisdiction_step, "jurisdiction_idx"))
+        if not alternate_service:
+          step_list.append((alternate_service_step, "alternate_service_idx"))
 
-    if not alternate_service:
-      step_list.append((alternate_service_step, "alternate_service_idx"))
-      
-    if paternity:
-      step_list.append((paternity_step, "paternity_idx"))
-      
-    if which_forms == 'agree':
-      step_list.append((uncontested_forms_step, "uncontested_forms_idx"))
-    elif which_forms == 'contested':
-      step_list.append((contested_forms_step, "contested_forms_idx"))
+          if paternity:
+            step_list.append((paternity_step, "paternity_idx"))
+
+          if which_forms == 'agree':
+            step_list.append((uncontested_forms_step, "uncontested_forms_idx"))
+          elif which_forms == 'contested':
+            step_list.append((contested_forms_step, "contested_forms_idx"))
+            step_list.append((more_process_step, "more_process_idx"))
+          else:
+            step_list.append((parents_agree_step, "parents_agree_idx"))
+            step_list.append((uncontested_forms_step, "uncontested_forms_idx"))
+            step_list.append((contested_forms_step, "contested_forms_idx"))
+            step_list.append((more_process_step, "more_process_idx"))
+
+          step_list.append((get_help, "get_help_idx"))
+          step_list.append((file_step, "file_idx"))
+          step_list.append((drpo_step, "drpo_idx"))
+
+          if default:
+            step_list.append((default_step, "default_idx"))
+          if which_forms in('contested', 'both'):
+            step_list.append((serve_step, "serve_idx"))
+          if domestic_violence:
+            step_list.append((domestic_violence_step, "domestic_violence_idx"))
+        
     else:
-      step_list.append((parents_agree_step, "parents_agree_idx"))
-      step_list.append((uncontested_forms_step, "uncontested_forms_idx"))
-      step_list.append((contested_forms_step, "contested_forms_idx"))
+      if not alternate_service:
+        step_list.append((alternate_service_step, "alternate_service_idx"))
 
-    step_list.append((get_help, "get_help_idx"))
-    step_list.append((file_step, "file_idx"))
-    step_list.append((drpo_step, "drpo_idx"))
+      if paternity:
+        step_list.append((paternity_step, "paternity_idx"))
 
-    if default:
-      step_list.append((default_step, "default_idx"))
-    if which_forms in('contested', 'both'):
-      step_list.append((serve_step, "serve_idx"))
-    if domestic_violence:
-      step_list.append((domestic_violence_step, "domestic_violence_idx"))
+      if which_forms == 'agree':
+        step_list.append((uncontested_forms_step, "uncontested_forms_idx"))
+      elif which_forms == 'contested':
+        step_list.append((contested_forms_step, "contested_forms_idx"))
+        step_list.append((more_process_step, "more_process_idx"))
+      else:
+        step_list.append((parents_agree_step, "parents_agree_idx"))
+        step_list.append((uncontested_forms_step, "uncontested_forms_idx"))
+        step_list.append((contested_forms_step, "contested_forms_idx"))
+        step_list.append((more_process_step, "more_process_idx"))
+
+      step_list.append((get_help, "get_help_idx"))
+      step_list.append((file_step, "file_idx"))
+      step_list.append((drpo_step, "drpo_idx"))
+
+      if default:
+        step_list.append((default_step, "default_idx"))
+      if which_forms in('contested', 'both'):
+        step_list.append((serve_step, "serve_idx"))
+      if domestic_violence:
+        step_list.append((domestic_violence_step, "domestic_violence_idx"))
     
   for iter_idx, step_tuple in enumerate( step_list ):
     define(step_tuple[ 1 ], iter_idx + 1)
@@ -95,15 +128,15 @@ template: alternate_service_step
 subject: |
   Step ${ alternate_service_idx }: Starting a case when you don't know where the other parent is
 content: |
-  <p>Usually when you start a case you must give the other parent  every form you file with the court.  This  is called "service."  If you don't know  where the other parent is you can ask the court to let you use "alternate  service," which is described below.</p>
-  <h3>After you start your case by filing a complaint and other documents, and  can't serve the other parent, ask the court to let you use alternate service.</h3>
+  <p>Usually when you start a case you must give the other parent  every form you file with the court.  This  is called "service."  If you don't know  where the other parent is you can ask the court to let you use "alternate  service," which is described below.</p>
+  <div class='step-subheading'>After you start your case by filing a complaint and other documents, and  can't serve the other parent, ask the court to let you use alternate service.</div>
   <ul>
   <li>Read: <a href="http://courts.alaska.gov/shc/family/shctips.htm">Tips on Locating People</a></li>
   <li>Review and fill out the <strong>Request to Serve Defendant by Posting or Alternative Service, and  Affidavit of Diligent Inquiry</strong>, <a href="https://public.courts.alaska.gov/web/forms/docs/civ-145.pdf">CIV-145</a> (this form tells you the things you must do to try to find the other parent  before asking for alternate service).</li>
   <li>Make 1 copy of the form and any attachments.</li>
   <li>File the original documents at your local court.  Keep one copy for your records.</li>
   </ul>
-  <h3>Final Steps</h3>
+  <div class='step-subheading'>Final Steps</div>
   <ul>
   <li>Now you wait. The clerk will sign the <strong>Notice to Absent Defendant</strong> if the court  finds you did enough to try to serve the other parent. The court will then post  the notice on the Alaska Court System's legal notice website for 4 weeks in a  row.</li>
   <li>Before the last week of posting, you must send a  copy of the notice and the complaint by regular first class mail and registered  or certified mail to the other parent at their last known residence or  workplace. However, if you have already tried to serve the other parent by  certified mail, then before the last week of posting, just send by regular  first class mail. File:</li>
@@ -121,31 +154,31 @@ template: paternity_step
 subject: |
   Step ${ paternity_idx }: Learn about paternity
 content: |
-  <h3>General Paternity Information</h3>
+  <div class='step-subheading'>General Paternity Information</div>
   <p>Establishing paternity means legally determining the biological  father of a child, and can make a big difference in a child's health, financial  outlook and sense of identity in knowing who both parents are. Once established, the father's name can be  placed on the child's birth certificate and he has legal and financial  responsibility for the child.  Disestablishing paternity is legally un-naming a man as the child's  biological father.</p>
-  <h3>Establishing or disestablishing paternity in your custody case</h3>
-  <p>When you file your complaint, state that paternity is an issue in  section 3D of the complaint.  You can  prove or disprove paternity several ways.</p>
+  <div class='step-subheading'>Establishing or disestablishing paternity in your custody case</div>
+  <p>When you file your complaint, state that paternity is an issue in  section 3D of the complaint.  You can  prove or disprove paternity several ways.</p>
   <ul>
-    <li> Each  parent signs an affidavit stating the biological father.  Fill out:</li>
+    <li> Each  parent signs an affidavit stating the biological father.  Fill out:</li>
     <ul>
       <li><strong>Three-Way  Affidavit to Disestablish and Establish Paternity, SHC-151</strong> <a href="http://courts.alaska.gov/shc/family/docs/shc-151.doc">Word</a> | <a href="https://courts.alaska.gov/shc/family/docs/shc-151n.pdf">PDF</a>,</li>
     </ul>
-    <li> The  mother, child, and person who may be the father take a DNA test using a  painless swab inside the cheek. The whole process takes about 15 minutes and  the result is ready within about 3 weeks.  If someone is not cooperating or you want Child Support Services  Division to do the testing, fill out and attach these forms to your complaint:</li>
+    <li> The  mother, child, and person who may be the father take a DNA test using a  painless swab inside the cheek. The whole process takes about 15 minutes and  the result is ready within about 3 weeks.  If someone is not cooperating or you want Child Support Services  Division to do the testing, fill out and attach these forms to your complaint:</li>
     <ul>
       <li><strong>Motion  &amp; Affidavit for Genetic (DNA) Testing, SHC-1370 </strong><a href="http://www.courts.alaska.gov/shc/family/docs/shc-1370.doc">Word</a> | <a href="http://www.courts.alaska.gov/shc/family/docs/shc-1370n.pdf">PDF</a><strong></strong></li>
       <li><strong>Order for Genetic (DNA) Testing, SHC-1375</strong> <a href="http://www.courts.alaska.gov/shc/family/docs/shc-1375.doc">Word</a> | <a href="http://www.courts.alaska.gov/shc/family/docs/shc-1375n.pdf">PDF</a></li>
     </ul>
     <li>You can  attach any DNA test results that have already been done to your complaint.</li>
   </ul>
-  <h3>Change the Birth Certificate</h3>
+  <div class='step-subheading'>Change the Birth Certificate</div>
   <p>If the court decides that the biological father is someone not  listed on the birth certificate, you must send a copy of the court order to the  Health Analytics &amp; Vital Records to change the birth certificate. After the birth certificate is changed, the  child is considered &quot;legitimated&quot; and the heir of that father. This  means that if the child should be eligible for any medical or financial  benefits connected to the father such as health insurance, or benefits based on  military service or being Alaska Native or American Indian. Also, if the father  dies, the child will be able to inherit and collect financial or medical  benefits that the child may be eligible for such as Social Security Children's  Insurance Benefits or military benefits. If you do not notify Health Analytics  &amp; Vital Records to change the birth certificate, the child may miss out on  these benefits.</p>
 ---
 template: parents_agree_step
 subject: |
   Step ${ parents_agree_idx }: Talk to the other parent to see if you agree
 content: |
-  <h3>The Benefits of Reaching an Agreement</h3>
-  <p>If you and the other parent agree about the issues in the  case, you can avoid a trial.  Some  benefits are:</p>
+  <div class='step-subheading'>The Benefits of Reaching an Agreement</div>
+  <p>If you and the other parent agree about the issues in the  case, you can avoid a trial.  Some  benefits are:</p>
   <ul>
     <li>Working out the parenting plan instead of  fighting is better for the children</li>
     <li>You decide the outcome rather than a judge - you  know more about the issues in your case than the judge ever will</li>
@@ -158,9 +191,9 @@ content: |
     <li>Mediation.</li>
     <li>Collaborative Law.</li>
   </ul>
-  <h3>Talk to the other parent about settling the case without a trial</h3>
+  <div class='step-subheading'>Talk to the other parent about settling the case without a trial</div>
   <p>Some parents want to work out the issues by agreement  without the judge deciding and are able to talk to each other in person,  on-line, or with the help of a friend or family member.</p>
-  <h3>Mediation</h3>
+  <div class='step-subheading'>Mediation</div>
   <p>Mediation is an informal, voluntary, and confidential way  to resolve disagreements without giving the decision-making power to someone  else, like a judge. A neutral person, called the mediator, helps people outside  the court process:</p>
   <ul>
     <li>figure out the important issues in the  disagreement</li>
@@ -169,16 +202,16 @@ content: |
     <li>explore creative solutions</li>
     <li>reach acceptable agreements</li>
   </ul>
-  <p>Parents can hire their own private mediator to help  resolve any issue in the case.  If there  was abuse or domestic violence in your marriage, be sure to hire someone with  training and experience working with domestic violence, and tell your mediator  if you want to bring a trusted support person with you.<br>
+  <p>Parents can hire their own private mediator to help  resolve any issue in the case.  If there  was abuse or domestic violence in your marriage, be sure to hire someone with  training and experience working with domestic violence, and tell your mediator  if you want to bring a trusted support person with you.<br>
     <a href="https://courts.alaska.gov/mediation/index.htm">Read about mediation</a>.</p>
-  <h3>Collaborative Law</h3>
+  <div class='step-subheading'>Collaborative Law</div>
   <p>The <a href="https://www.alaskacollaborative.org/">Alaska  Association of Collaborative Professionals</a> helps people resolve parenting  issues outside of the court process without a judge making decisions. Learn more about the group.<br>
     Watch a video<br>
-    Watch a short <a href="https://www.youtube.com/watch?v=4EuW9HET3nM&list=PLRS0LlEIQsuTsfO0wSTsSTIvVE5RO8sLc&index=6&t=3s">video  that discusses resolving your case</a> by reaching agreement with the other  parent.  It discusses mediation and  settlement conferences which may be available to you using free court programs  once you file your case.</p>
-  <h3>Talk to a Lawyer</h3>
+    Watch a short <a href="https://www.youtube.com/watch?v=4EuW9HET3nM&list=PLRS0LlEIQsuTsfO0wSTsSTIvVE5RO8sLc&index=6&t=3s">video  that discusses resolving your case</a> by reaching agreement with the other  parent.  It discusses mediation and  settlement conferences which may be available to you using free court programs  once you file your case.</p>
+  <div class='step-subheading'>Talk to a Lawyer</div>
   <p>It is a good idea to get legal advice by talking to an  attorney about an agreement. Both parents need to understand how agreeing to  each issue affects the other issues in the agreement. If you agree to something  without thinking it through, there can be serious and long-standing  consequences. Once a judge signs off on your agreement, it will be a binding  court order that outlines each parents' responsibilities and rights regarding  the issues in the case.</p>
   <ul>
-    <li>Many lawyers offer free or flat fee  consultations without having to hire them for the whole case.  <a href="http://courts.alaska.gov/shc/shclawyer.htm">Find a lawyer</a>.</li>
+    <li>Many lawyers offer free or flat fee  consultations without having to hire them for the whole case.  <a href="http://courts.alaska.gov/shc/shclawyer.htm">Find a lawyer</a>.</li>
     <li>Depending on your income, you may qualify for <a href="https://alaska.freelegalanswers.org/">free legal answers</a>.</li>
     <li>Depending on your income and circumstances, you  may qualify for a free lawyer. <a href="https://www.alsc-law.org/apply-for-services/">Alaska Legal Services  Corporation</a>.</li>
   </ul>
@@ -187,9 +220,9 @@ template: uncontested_forms_step
 subject: |
   Step ${ uncontested_forms_idx }: Fill out the forms to start your uncontested custody case
 content: |
-  <p>If you and the other parent agree on agree on everything  (a parenting plan including decision-making and schedule, paternity, and child  support), you can fill out forms to start the case together.  This is called an uncontested case.<br>
-    You will not know your case number until you file your  documents with the court.  You can write  the case number on all your forms then.</p>
-  <h3>Required forms – 1 copy that both parents sign if signatures are needed</h3>
+  <p>If you and the other parent agree on agree on everything  (a parenting plan including decision-making and schedule, paternity, and child  support), you can fill out forms to start the case together.  This is called an uncontested case.</p>
+  <p>You will not know your case number until you file your  documents with the court.  You can write  the case number on all your forms then.</p>
+  <div class='step-subheading'>Required forms – 1 copy that both parents sign if signatures are needed</div>
   <ul>
     <li><strong>Uncontested  Complaint for Custody of Minor Children</strong>, SHC-118 <br>
       as a <a href="https://courts.alaska.gov/shc/family/docs/shc-118.doc">Word</a> file<br>
@@ -201,15 +234,15 @@ content: |
       <li>In the caption, print your name above  "Plaintiff" and the other parent's name above "Defendant."</li>
       <li>Follow the directions on the form and fill out  every section.</li>
     </ul>
-    <li><strong>Joint  Motion to Put Settlement on the Record, SHC-1063<br>
-      </strong>as a <a href="http://www.courts.alaska.gov/shc/family/docs/shc-1063.doc">Word</a> file<br>
+    <li><strong>Joint  Motion to Put Settlement on the Record, SHC-1063</strong><br>
+      as a <a href="http://www.courts.alaska.gov/shc/family/docs/shc-1063.doc">Word</a> file<br>
       courts.alaska.gov/shc/family/docs/shc-1063.doc<br>
       as a <a href="http://www.courts.alaska.gov/shc/family/docs/shc-1063n.pdf">PDF</a><br>
       courts.alaska.gov/shc/family/docs/shc-1063n.pdf</li>
     <li><strong>Case  description form</strong>, <a href="https://public.courts.alaska.gov/web/forms/docs/civ-125s.pdf">CIV-125S</a><br>
       public.courts.alaska.gov/web/forms/docs/civ-125s.pdf</li>
   </ul>
-  <h3>Required forms – 2 copies (each parent fills out and signs a separate copy)</h3>
+  <div class='step-subheading'>Required forms – 2 copies (each parent fills out and signs a separate copy)</div>
   <ul>
     <li><strong>Child  Custody Jurisdiction Affidavit, </strong><a href="https://public.courts.alaska.gov/web/forms/docs/dr-150.pdf"><strong>DR-150</strong></a> [Fill-In PDF] <br>
       2 copies -  each parent fills out their own<br>
@@ -224,14 +257,14 @@ content: |
         <li>See <a href="http://courts.alaska.gov/shc/family/docs/shc-dr305f-sample.pdf">How to  Fill out the Child Support Guidelines Affidavit</a><br>
           courts.alaska.gov/shc/family/docs/shc-dr305f-sample.pdf.</li>
         <li>Attach your most recent tax return and pay stubs  to the <strong>Child Support Guidelines  Affidavit</strong>.</li>
-        <li>Sign these forms in front of a notary, who will  need to see a picture ID.  Court staff  can notarize your signature for free.</li>
+        <li>Sign these forms in front of a notary, who will  need to see a picture ID.  Court staff  can notarize your signature for free.</li>
       </ul>
     </li>
     <li><strong>Information</strong> Sheet<a href="https://public.courts.alaska.gov/web/forms/docs/dr-314.pdf">,  DR-314</a><br>
       public.courts.alaska.gov/web/forms/docs/dr-314.pdf <br>
       Fill in 1-3 with complete information for yourself, the children in the case,  the other parent if you know it, and then sign and date</li>
   </ul>
-  <h3>Required forms - fill out but do <strong>not</strong> sign because the judge will sign them</h3>
+  <div class='step-subheading'>Required forms - fill out but do <strong>not</strong> sign because the judge will sign them</div>
   <ul>
     <li><strong>Child Support Order</strong>, <a href="https://public.courts.alaska.gov/web/forms/docs/dr-300.pdf"><strong>DR-300</strong></a><strong><br>
       </strong>public.courts.alaska.gov/web/forms/docs/dr-300.pdf<strong></strong></li>
@@ -240,7 +273,7 @@ content: |
     <li><strong>Custody</strong> Judgment and Decree, <a href="https://public.courts.alaska.gov/web/forms/docs/dr-465.pdf">DR-465</a> [Fill-In PDF]<br>
       public.courts.alaska.gov/web/forms/docs/dr-465.pdf</li>
   </ul>
-  <h3>Optional forms depending on your situation</h3>
+  <div class='step-subheading'>Optional forms depending on your situation</div>
   <ul>
     <li><strong>Choose</strong> 1 form based on the  parenting schedule if it is not a primary custody calculation (where children  are with 1 parent for at least 256 overnights/year<u>)</u>
       <ul>
@@ -260,8 +293,8 @@ template: contested_forms_step
 subject: |
   Step ${ contested_forms_idx }: Fill out the forms to start your custody case
 content: |
-  <p>You will not know your case number until you file your  documents with the court.  You can write  the case number on all your forms then.</p>
-  <h3>Required forms</h3>
+  <p>You will not know your case number until you file your  documents with the court.  You can write  the case number on all your forms then.</p>
+  <div class='step-subheading'>Required forms</div>
   <ul>
     <li><strong>Custody  Complaint, SHC-115</strong> <br>
       as a <a href="http://courts.alaska.gov/shc/family/docs/shc-115.doc">Word</a> file<br>
@@ -286,7 +319,7 @@ content: |
         <li>See <a href="http://courts.alaska.gov/shc/family/docs/shc-dr305f-sample.pdf">How to  Fill out the Child Support Guidelines Affidavit</a><br>
           courts.alaska.gov/shc/family/docs/shc-dr305f-sample.pdf.</li>
         <li>Attach your most recent tax return and pay stubs  to the <strong>Child Support Guidelines  Affidavit</strong>.</li>
-        <li>Sign these forms in front of a notary, who will  need to see a picture ID.  Court staff  can notarize your signature for free.</li>
+        <li>Sign these forms in front of a notary, who will  need to see a picture ID.  Court staff  can notarize your signature for free.</li>
       </ul>
     </li>
     <li><strong>Information</strong> Sheet<a href="https://public.courts.alaska.gov/web/forms/docs/dr-314.pdf">,  DR-314</a><br>
@@ -308,7 +341,7 @@ content: |
       Check &quot;Uncontested Custody (Unmarried Parents)<br>
       public.courts.alaska.gov/web/forms/docs/civ-125s.pdf</li>
   </ul>
-  <h3>Optional forms depending on your situation</h3>
+  <div class='step-subheading'>Optional forms depending on your situation</div>
   <ul>
     <li><strong>Choose</strong> 1 form based on the  parenting schedule if it is not a primary custody calculation (where children  are with 1 parent for at least 256 overnights/year<u>)</u>
       <ul>
@@ -332,7 +365,7 @@ content: |
     <li>A court must have the authority called  jurisdiction to issue an order about a custody or parenting plan or a child  support order.</li>
     <li>Generally, only the court in the state where the  child has lived for the last 6 months can make decisions, enter a parenting  plan, or order child support. This is  called the child's &quot;home state.&quot;</li>
   </ul>
-  <p>Jurisdiction can be very complicated.  For example, if a baby is less than 6 months old and has moved between  states, there may not be a "home state."  This is one example of an exception when the Alaska court may be able to  decide issues about a child that hasn't lived here for 6 months.  <a href="https://courts.alaska.gov/shc/shclawyer.htm">Talking to a lawyer</a> can  help you decide which is the best state for your case.</p>
+  <p>Jurisdiction can be very complicated.  For example, if a baby is less than 6 months old and has moved between  states, there may not be a "home state."  This is one example of an exception when the Alaska court may be able to  decide issues about a child that hasn't lived here for 6 months.  <a href="https://courts.alaska.gov/shc/shclawyer.htm">Talking to a lawyer</a> can  help you decide which is the best state for your case.</p>
 ---
 template: file_step
 subject: |
@@ -341,7 +374,7 @@ content: |
   <ul>
     <li>Make 2 copies of your  forms: 1 copy for your own records and 1 copy for the other parent.</li>
     <li>Find the closest  Alaska Trial Courthouse to file your petition: <a href="http://courts.alaska.gov/courtdir/index.htm#trial">Court Directory</a></li>
-    <li>The clerk of court  will open your case, give you 2 copies of a "Summons" and usually a "Standing  Order" that contains important information about your case.  1 copy is for you; 1 copy is for the other  parent.  (Note: if you file an  uncontested custody case, you may not get a Summons.)</li>
+    <li>The clerk of court  will open your case, give you 2 copies of a "Summons" and usually a "Standing  Order" that contains important information about your case.  1 copy is for you; 1 copy is for the other  parent.  (Note: if you file an  uncontested custody case, you may not get a Summons.)</li>
     <li>There is a fee to file  a case. If you cannot afford it and want  to file the case for free, you can file: <strong>Exemption  From the Payment of Fees</strong>, <a href="http://public.courts.alaska.gov/web/forms/docs/tf-920.pdf">TF-920</a>. Usually, you file the TF-920 form with your  complaint and other papers when you file your case. The judge decides whether  you have to pay the filing fee or get to file for free before the case starts.  After you pay the filing fee or the court says you can file for free, the court  will give you a Summons. At some courts, you must return to the court to get  your Summons, other courts will issue it automatically after deciding you don't  have to pay the filing fee. Check with your local court to make sure you  understand the procedure in using the TF-920 form and getting the Summons</li>
     <li>File the original with the court.</li>
   </ul>
@@ -351,15 +384,15 @@ template: drpo_step
 subject: |
   Step ${ drpo_idx }: Read the "Domestic Relations Procedural Order" or "Standing Order" if the clerk gives you one when you file your case
 content: |
-  <p>This is the first order from your judge that sets out the  basic rules for you and the other parent to follow during the case.  Violating this order can affect the outcome  of your case.  The order usually state  you cannot take your children out of Alaska unless the other parent agrees or  the court gives permission:<br>
+  <p>This is the first order from your judge that sets out the  basic rules for you and the other parent to follow during the case.  Violating this order can affect the outcome  of your case.  The order usually state  you cannot take your children out of Alaska unless the other parent agrees or  the court gives permission:<br>
   Also, check with your local court for their <a href="http://courts.alaska.gov/shc/family/shcparent-ed.htm">parent education  requirements</a>.</p>
-  If you want to do something forbidden by the order and the other parent  does not agree, ask the court by filing a motion and wait for the court's  answer before doing it. You can learn  about motions by answering more questions.   If you want to save this Action Plan, be sure to download, save, or  print it. Then return to the Guided  Assist page and use the Guided Assist search box to find &quot;Asking for an  Order in a Divorce Case When the Issue Can't Wait for the Court's Final  Decision (Filing a Motion) and Responding to a Motion.&quot;
+  If you want to do something forbidden by the order and the other parent  does not agree, ask the court by filing a motion and wait for the court's  answer before doing it. You can learn  about motions by answering more questions.   If you want to save this Action Plan, be sure to download, save, or  print it. Then return to the Guided  Assist page and use the Guided Assist search box to find &quot;Asking for an  Order in a Divorce Case When the Issue Can't Wait for the Court's Final  Decision (Filing a Motion) and Responding to a Motion.&quot;
 ---
 template: serve_step
 subject: |
   Step ${ serve_idx }: Serve the complaint and summons
 content: | 
-  <h3>Regular service</h3>
+  <div class='step-subheading'>Regular service</div>
   <p>You have to give the other parent copies of everything you file  in court plus the Summons. This is called "service." There are special  requirements about how to serve the other parent the forms that start the case.<br>
     Choose how you want to serve the forms that start the case (you  cannot serve these forms by hand delivery or 1st class mail, but you can serve  later documents by these methods):</p>
   <ul>
@@ -374,15 +407,15 @@ content: |
   </ul>
   <p><strong>Process Server:</strong> (more  expensive – up to $65 in Alaska – but may be best if the other parent refused  to sign for certified mail)</p>
   <ul>
-    <li>Choose a process server and pay for their  services. Find a <a href="https://public.courts.alaska.gov/web/trialcourts/docs/process-servers.pdf">statewide  list of authorized process servers</a>.   For process servers outside of Alaska, contact the local court where the  opposing party lives, or do internet research.</li>
-    <li>Fill out the form <strong>Service Instructions</strong>, <a href="https://public.courts.alaska.gov/web/forms/docs/civ-615.pdf">CIV-615</a>.  Give this form to the process server so that  when he or she completes service, you will receive a <strong>Proof of Service</strong> form.</li>
+    <li>Choose a process server and pay for their  services. Find a <a href="https://public.courts.alaska.gov/web/trialcourts/docs/process-servers.pdf">statewide  list of authorized process servers</a>.   For process servers outside of Alaska, contact the local court where the  opposing party lives, or do internet research.</li>
+    <li>Fill out the form <strong>Service Instructions</strong>, <a href="https://public.courts.alaska.gov/web/forms/docs/civ-615.pdf">CIV-615</a>.  Give this form to the process server so that  when he or she completes service, you will receive a <strong>Proof of Service</strong> form.</li>
     <li>If you are hiring a process service outside of  Alaska, give them the Return of Service, SHC-193 <a href="http://www.courts.alaska.gov/shc/family/docs/shc-193.doc">Word</a> | <a href="http://www.courts.alaska.gov/shc/family/docs/shc-193n.pdf">PDF</a>. They  will send it back to you after serving the <strong>Summons </strong>and<strong> complaint</strong>.</li>
     <li>Save the <strong>Proof  of Service</strong> or <strong>Return of Service</strong> form in case you need to show you served the other parent.</li>
     <li>You can read more about serving with a process  server in: <strong>How to Serve a Summons,</strong> <a href="https://public.courts.alaska.gov/web/forms/docs/civ-615.pdf">CIV-106</a>.</li>
   </ul>
-  <h3>Options if regular service does not work</h3>
+  <div class='step-subheading'>Options if regular service does not work</div>
   <p><strong>Alternate Service</strong><br>
-    If you cannot find the other parent, you may ask the court for  permission to serve the other parent in a different way. For example, you can  ask to post on the court's legal notice website, post to someone's social media  account, email, publish in a newspaper that the other parent reads or post at a  shelter or some other location the other parent is known to frequent.  Read more about <a href="http://courts.alaska.gov/shc/family/shc-184.htm">alternate service</a>.<br>
+    If you cannot find the other parent, you may ask the court for  permission to serve the other parent in a different way. For example, you can  ask to post on the court's legal notice website, post to someone's social media  account, email, publish in a newspaper that the other parent reads or post at a  shelter or some other location the other parent is known to frequent.  Read more about <a href="http://courts.alaska.gov/shc/family/shc-184.htm">alternate service</a>.<br>
     <strong>Special Situations</strong><br>
     Read more about <a href="http://www.courts.alaska.gov/shc/family/serve.htm#11">special situations</a> like serving someone in a foreign country, the military or jail.</p>
 ---
@@ -390,7 +423,7 @@ template: more_process_step
 subject: |
   Step ${ more_process_idx }: Learn more about the process
 content: | 
-  <h3>Read</h3>
+  <div class='step-subheading'>Read</div>
   <ul>
     <li><strong>Flow Chart  for Case Process, SHC-185</strong> <br>
       as a <a href="http://courts.alaska.gov/shc/family/docs/shc-185.doc">Word</a> file<br>
@@ -398,7 +431,7 @@ content: |
     <li><strong>The Life  of a Case</strong>, <a href="http://courts.alaska.gov/shc/family/docs/shc-180n.pdf">SHC-180</a><br>
     </li>
   </ul>
-  <h3>Watch a Video</h3>
+  <div class='step-subheading'>Watch a Video</div>
   <ul>
     <li><a href="https://www.youtube.com/watch?v=z2d2CLllPUU&t=0s&index=2&list=PLRS0LlEIQsuTsfO0wSTsSTIvVE5RO8sLc">Introduction  to Divorce and Custody Cases in Alaska</a></li>
     <li><a href="https://www.youtube.com/watch?v=EzSV4Caz6Co&index=4&list=PLRS0LlEIQsuTsfO0wSTsSTIvVE5RO8sLc&t=0s">Overview  and Timeline of the Case</a></li>
@@ -421,37 +454,37 @@ subject: |
   Abuse or domestic violence and  parenting
   % endif
 content: |
-  <h3>If you are in immediate danger, call 911</h3>
+  <div class='step-subheading'>If you are in immediate danger, call 911</div>
   <p><strong>People who have  experienced domestic violence can be at greater risk when they start a court  case.</strong> During this time, safety is very important. The dynamics in a relationship with domestic  violence may also cause people to feel pressured to agree to something they  don't want. If this is your situation,  these resources may help:</p>
   <ul>
     <li>Find a <a href="https://www.andvsa.org/communitys-programs">domestic violence program</a> in your area to learn about what services they offer (counseling, financial  assistance, housing and safe shelter, resources for children, and help with  court).</li>
-    <li>Ask the  court for a protective order.  You can  get information about asking for a protective order by answering more  questions.  If you want to save this  Action Plan, be sure to download, save, or print it. then return to the Guided Assist page and use  the Guided Assist search box to find &quot;Protective Orders.&quot;</li>
+    <li>Ask the  court for a protective order.  You can  get information about asking for a protective order by answering more  questions.  If you want to save this  Action Plan, be sure to download, save, or print it. then return to the Guided Assist page and use  the Guided Assist search box to find &quot;Protective Orders.&quot;</li>
     <li>See if  you qualify for the <a href="https://www.andvsa.org/for-survivors/">legal  assistance through your local domestic violence program</a> or <a href="https://www.alsc-law.org/apply-for-services">Alaska Legal Services</a>.</li>
   </ul>
   % if which_forms == 'agree': 
-    However, some parents in a relationship that includes domestic  violence are comfortable reaching an agreement about a parenting plan for a  variety of reasons.  Sometimes:</p>
+    However, some parents in a relationship that includes domestic  violence are comfortable reaching an agreement about a parenting plan for a  variety of reasons.  Sometimes:</p>
   <ul>
     <li>the  domestic violence does not make either parent uncomfortable or afraid to ask  for what they want in the parenting plan;</li>
     <li>if the  domestic violence does make a parent uncomfortable or afraid, provisions are  used to make the process of trying to reach an agreement feel safer (having a  support person present, having a mediator or a trusted third person help with  discussions, not meeting in-person, meeting in different rooms, or talking  about an agreement through email, text or telephone);</li>
     <li>one  parent's main goal is to finish the case and be done in a safe manner so they  are willing to give up some things in the agreement that they may be entitled  to under the law.</li>
   </ul>
-  <p>You can decide whether you are comfortable trying to reach an  agreement with the other parent based on the facts and circumstances of your  case.  As explained below, if you want to  try to reach an agreement about the parenting plan, your options may be limited  if there has been domestic violence.</p>
-  <h3>Your Parenting Plan agreement may be limited if there is domestic violence</h3>
+  <p>You can decide whether you are comfortable trying to reach an  agreement with the other parent based on the facts and circumstances of your  case.  As explained below, if you want to  try to reach an agreement about the parenting plan, your options may be limited  if there has been domestic violence.</p>
+  <div class='step-subheading'>Your Parenting Plan agreement may be limited if there is domestic violence</div>
   % else:
-  <h3>How domestic violence affects custody</h3>
+  <div class='step-subheading'>How domestic violence affects custody</div>
   % endif
   <ul>
     <li>The law presumes that a parent with a  &quot;history of domestic violence&quot; not get custody or unsupervised  visitation unless he or she meets certain requirements. These may include  completing a batterer's intervention or substance abuse treatment program.</li>
-    <li>A &quot;history of domestic violence&quot; is  defined by the law as either one incident of domestic violence that caused  serious physical injury, or more than one incident.  The parent's domestic violence behavior needs  to fit under one of the domestic violence crimes in the law.  There does not have to be a protective order  or criminal case for the court to find a parent has a history of domestic  violence.  The court can find domestic  violence based on one parent's testimony.</li>
+    <li>A &quot;history of domestic violence&quot; is  defined by the law as either one incident of domestic violence that caused  serious physical injury, or more than one incident.  The parent's domestic violence behavior needs  to fit under one of the domestic violence crimes in the law.  There does not have to be a protective order  or criminal case for the court to find a parent has a history of domestic  violence.  The court can find domestic  violence based on one parent's testimony.</li>
   </ul>
   % if which_forms == 'agree':
-  <h3>Considerations if you don't agree</h3>
+  <div class='step-subheading'>Considerations if you don't agree</div>
   % else:
-  <h3>Contact between parent &amp; children</h3>
+  <div class='step-subheading'>Contact between parent &amp; children</div>
   % endif
     <p>If you think the other parent should not have any contact with  your children, you will need to convince the judge that it is in the children's  best interest. Generally, it is unusual  for a judge in a divorce or custody case to decide that a parent cannot see his  or her children. There is research that shows it is important for children to  have a relationship with both parents if it can happen in a safe manner. If the judge finds the domestic violence  presumption applies, the judge will usually permit supervised contact between  the parent and the children while the parent is completing a batterer's  intervention or substance abuse treatment program. After the parent finishes the program and any  other requirements the judge ordered, the judge may lift the supervision  restriction and allow a different parenting schedule.</p>
   % if not which_forms == 'agree': 
-  <h3>Tell the judge your concerns</h3>
+  <div class='step-subheading'>Tell the judge your concerns</div>
   % endif
     <p>The judge will only know about your domestic violence concerns if  you state them in the documents you file and when you talk in court. If you have concerns for the children's  safety when in the care of the other parent, or for yourself when interacting  with the other parent, describe them to the judge. If the judge is going to allow the other  parent to have parenting time (visitation) with the children, you can suggest  ways to address your concerns. Some  options include:</p>
   <ul>
@@ -478,14 +511,14 @@ template: default_step
 subject: |
   Step ${ default_idx }: File for Default if the other parent does not respond within 20 days
 content: | 
-  <h3>Wait for 20 days</h3>
-  <p>If the other parent does not file an Answer within 20 days  of being served your complaint, you may ask the court to "default" the other  side and grant you everything you asked for.   To do this, you must have proof that you served the other party  according to the rules.</p>
-  <h3>Tell the court how you served the other parent</h3>
+  <div class='step-subheading'>Wait for 20 days</div>
+  <p>If the other parent does not file an Answer within 20 days  of being served your complaint, you may ask the court to "default" the other  side and grant you everything you asked for.   To do this, you must have proof that you served the other party  according to the rules.</p>
+  <div class='step-subheading'>Tell the court how you served the other parent</div>
   <p>Fill out a <strong>Proof of  Service Form, SHC-405</strong>: <a href="http://www.courts.alaska.gov/shc/family/docs/shc-405.doc">Word</a> | <a href="http://www.courts.alaska.gov/shc/family/docs/shc-405n.pdf">PDF</a></p>
-  <h3>Ask for a Default</h3>
+  <div class='step-subheading'>Ask for a Default</div>
   <p>Fill out a <strong>Default  Application, SHC-400</strong>: <a href="http://www.courts.alaska.gov/shc/family/docs/shc-400.doc">Word</a> | PDF<br>
-    Be aware that if the other parent is on active duty in the  military, the court likely will not enter a default judgment right away.  The court may appoint a lawyer to the other  parent first.  </p>
-  <h3>Include</h3>
+    Be aware that if the other parent is on active duty in the  military, the court likely will not enter a default judgment right away.  The court may appoint a lawyer to the other  parent first.  </p>
+  <div class='step-subheading'>Include</div>
   <p><strong>Findings of Fact  and Conclusions of Law (Custody) &amp; Decree of Custody and Judgment</strong>, <a href="https://public.courts.alaska.gov/web/forms/docs/dr-460-465.pdf">DR-460  &amp; DR-465</a></p>
   <ul>
     <li>Fill out the top of the first page with the case  information.</li>
@@ -493,24 +526,23 @@ content: |
     <li>Fill out the "Child Custody and Visitation" and  "Financial Issues" sections.</li>
     <li>On the Decree of Custody and Judgment, fill in  the top of the page with the case information, the children's names and dates  of birth, and leave the rest blank.</li>
   </ul>
-  <h3>Serve the other parent</h3>
+  <div class='step-subheading'>Serve the other parent</div>
   <p>Send the other parent a copy of your default application  and all forms you are filing by first class U.S. mail or hand delivery.</p>
-  <h3>File with the court and find out about a default hearing </h3>
+  <div class='step-subheading'>File with the court and find out about a default hearing </div>
   <p>File your forms and ask your local court whether they will  contact you or you need to contact them to schedule a default hearing.</p>
 ---
 template: other_custody_info_step
 subject: |
   Step ${ other_custody_info_idx }: Learn about other parts of a custody case
 content: | 
-  <h3>More Guided Assistants</h3>
+  <div class='step-subheading'>More Guided Assistants</div>
   <p>Responding if your spouse starts, a custody case</p>
   <p>Enforcing a custody order</p>
   <p>Changing a custody order</p>
-  <h3>Self-Help Center: Family Law</h3>
+  <div class='step-subheading'>Self-Help Center: Family Law</div>
   <p><a href="http://courts.alaska.gov/shc/family/answer.htm">Responding to a Custody Case</a></p>
   <p><a href="http://courts.alaska.gov/shc/family/motions.htm">Asking for an Order/ Filing a Motion</a></p>
   <p><a href="http://courts.alaska.gov/shc/family/shcplan.htm">Creating a Parenting Plan</a></p>
   <p><a href="http://courts.alaska.gov/shc/family/shctrial.htm">Getting Ready for a Hearing or Trial</a></p>
   <p><a href="http://courts.alaska.gov/shc/family/shcmodify.htm">Changing a Custody / Support Order</a></p>
   <p><a href="http://courts.alaska.gov/shc/family/shcenforce.htm">Enforcing a Custody Order</a></p>
-
