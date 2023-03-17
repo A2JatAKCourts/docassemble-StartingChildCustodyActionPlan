@@ -38,12 +38,14 @@ code: |
 
           if which_forms == 'agree':
             step_list.append((uncontested_forms_step, "uncontested_forms_idx"))
+            step_list.append((parents_agree_step, "parents_agree_idx"))
           elif which_forms == 'contested':
             step_list.append((contested_forms_step, "contested_forms_idx"))
             step_list.append((more_process_step, "more_process_idx"))
           else:
             step_list.append((parents_agree_step, "parents_agree_idx"))
             step_list.append((uncontested_forms_step, "uncontested_forms_idx"))
+            step_list.append((parents_agree_step, "parents_agree_idx"))
             step_list.append((contested_forms_step, "contested_forms_idx"))
             step_list.append((more_process_step, "more_process_idx"))
 
@@ -67,12 +69,14 @@ code: |
 
       if which_forms == 'agree':
         step_list.append((uncontested_forms_step, "uncontested_forms_idx"))
+        step_list.append((parents_agree_step, "parents_agree_idx"))
       elif which_forms == 'contested':
         step_list.append((contested_forms_step, "contested_forms_idx"))
         step_list.append((more_process_step, "more_process_idx"))
       else:
         step_list.append((parents_agree_step, "parents_agree_idx"))
         step_list.append((uncontested_forms_step, "uncontested_forms_idx"))
+        step_list.append((parents_agree_step, "parents_agree_idx"))
         step_list.append((contested_forms_step, "contested_forms_idx"))
         step_list.append((more_process_step, "more_process_idx"))
 
