@@ -31,11 +31,6 @@ Scenario: Row #3
       | user_need | custody |  |    
       | jurisdiction | False |  | 
       | add_jurisdiction_info_to_plan | stop |  |
-      | alternate_service | True |  |    
-      | paternity | True |  |       
-      | which_forms | agree |  |    
-      | default | True |  |    
-      | domestic_violence | True |  |    
     And I take a screenshot
     And I should see the phrase "Make sure that the Alaska court has the authority to change the order Or Check if Alaska has jurisdiction"
     And I should see the phrase "Get more information or help"
@@ -50,20 +45,17 @@ Scenario: Row #4
       | add_jurisdiction_info_to_plan | go |  |
       | alternate_service | True |  |    
       | paternity | True |  |       
-      | which_forms | agree |  |    
       | default | True |  |    
       | domestic_violence | True |  |    
     And I take a screenshot
     And I should see the phrase "Make sure that the Alaska court has the authority to change the order Or Check if Alaska has jurisdiction"
     And I should see the phrase "Learn about paternity"
-    And I should see the phrase "Talk to the other parent to see if you agree"
-    And I should see the phrase "Fill out the forms to start your uncontested custody case"
     And I should see the phrase "Fill out the forms to start your custody case"
     And I should see the phrase "Get more information or help"
     And I should see the phrase "File the original with your local court"
     And I should see the phrase "Read the “Domestic Relations Procedural Order” or “Standing Order” if the clerk gives you one when you file your case"
-    And I should see the phrase "File for Default if the other parent does not respond within 20 days"
     And I should see the phrase "Serve the complaint and summons"
     And I should see the phrase "Learn more about the process"
-    And I should see the phrase "Abuse or domestic violence resources and reaching an agreement"
+    And I should see the phrase "Abuse or domestic violence resources & reaching an agreement"
+    And I should see the phrase "File for Default if the other parent does not respond within 20 days"
     And I download "starting_child_custody_action_plan.pdf"
