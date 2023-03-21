@@ -369,7 +369,7 @@ content: |
 ---
 template: jurisdiction_step
 subject: |
-  Step ${ jurisdiction_idx }: Make sure that the Alaska court has the authority to change the order Or Check if Alaska has jurisdiction
+  Step ${ jurisdiction_idx }: Check if Alaska has jurisdiction
 content: |
   <ul>
     <li>A court must have the authority called  jurisdiction to issue an order about a custody or parenting plan or a child  support order.</li>
@@ -459,7 +459,7 @@ template: domestic_violence_step
 subject: |
   Step ${ domestic_violence_idx }: 
   % if which_forms in('agree','both'):
-  Abuse or domestic violence resources &amp; reaching an agreement
+  Abuse or domestic violence resources and reaching an agreement
   % else:
   Abuse or domestic violence and  parenting
   % endif
