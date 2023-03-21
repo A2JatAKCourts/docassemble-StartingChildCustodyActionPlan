@@ -335,5 +335,3 @@ attachment:
   variable name: starting_child_custody_action_plan_attachment[i]
   skip undefined: True
   docx template file: starting_child_custody_action_plan.docx
-
-
