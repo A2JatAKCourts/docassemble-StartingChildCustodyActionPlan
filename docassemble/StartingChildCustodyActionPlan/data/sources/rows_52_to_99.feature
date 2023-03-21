@@ -16,6 +16,7 @@ Scenario: Row #52
     And I take a screenshot
     And I should see the phrase "Starting a case when you don’t know where the other parent is"
     And I should see the phrase "Learn about paternity"
+    And I should see the phrase "Talk to the other parent to see if you agree"
     And I should see the phrase "Fill out the forms to start your uncontested custody case"
     And I should see the phrase "Get more information or help"
     And I should see the phrase "File the original with your local court"
@@ -37,6 +38,7 @@ Scenario: Row #54
       | domestic_violence | True |  |    
     And I take a screenshot
     And I should see the phrase "Learn about paternity"
+    And I should see the phrase "Talk to the other parent to see if you agree"
     And I should see the phrase "Fill out the forms to start your uncontested custody case"
     And I should see the phrase "Get more information or help"
     And I should see the phrase "File the original with your local court"
@@ -81,6 +83,7 @@ Scenario: Row #61
     And I take a screenshot
     And I should see the phrase "Starting a case when you don’t know where the other parent is"
     And I should see the phrase "Learn about paternity"
+    And I should see the phrase "Talk to the other parent to see if you agree"
     And I should see the phrase "Fill out the forms to start your uncontested custody case"
     And I should see the phrase "Fill out the forms to start your custody case"
     And I should see the phrase "Get more information or help"
@@ -104,6 +107,7 @@ Scenario: Row #66
       | domestic_violence | True |  |    
     And I take a screenshot
     And I should see the phrase "Starting a case when you don’t know where the other parent is"
+    And I should see the phrase "Talk to the other parent to see if you agree"
     And I should see the phrase "Fill out the forms to start your uncontested custody case"
     And I should see the phrase "Get more information or help"
     And I should see the phrase "File the original with your local court"
@@ -124,6 +128,7 @@ Scenario: Row #72
       | domestic_violence | True |  |    
     And I take a screenshot
     And I should see the phrase "Starting a case when you don’t know where the other parent is"
+    And I should see the phrase "Talk to the other parent to see if you agree"
     And I should see the phrase "Fill out the forms to start your uncontested custody case"
     And I should see the phrase "Fill out the forms to start your custody case"
     And I should see the phrase "Get more information or help"
@@ -148,6 +153,7 @@ Scenario: Row #79
       | domestic_violence | False |  |    
     And I take a screenshot
     And I should see the phrase "Learn about paternity"
+    And I should see the phrase "Talk to the other parent to see if you agree"
     And I should see the phrase "Fill out the forms to start your uncontested custody case"
     And I should see the phrase "Get more information or help"
     And I should see the phrase "File the original with your local court"
@@ -166,6 +172,7 @@ Scenario: Row #88
       | default | True |  |    
       | domestic_violence | True |  |    
     And I take a screenshot
+    And I should see the phrase "Talk to the other parent to see if you agree"
     And I should see the phrase "Fill out the forms to start your uncontested custody case"
     And I should see the phrase "Get more information or help"
     And I should see the phrase "File the original with your local court"
@@ -186,6 +193,7 @@ Scenario: Row #99
       | default | False |  |    
       | domestic_violence | False |  |    
     And I take a screenshot
+    And I should see the phrase "Talk to the other parent to see if you agree"
     And I should see the phrase "Fill out the forms to start your uncontested custody case"
     And I should see the phrase "Fill out the forms to start your custody case"
     And I should see the phrase "Get more information or help"

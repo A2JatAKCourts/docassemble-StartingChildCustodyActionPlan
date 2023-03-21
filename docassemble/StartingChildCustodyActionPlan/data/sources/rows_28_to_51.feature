@@ -16,6 +16,7 @@ Scenario: Row #28
     And I take a screenshot
     And I should see the phrase "Check if Alaska has jurisdiction"
     And I should see the phrase "Learn about paternity"
+    And I should see the phrase "Talk to the other parent to see if you agree"
     And I should see the phrase "Fill out the forms to start your uncontested custody case"
     And I should see the phrase "Get more information or help"
     And I should see the phrase "File the original with your local court"

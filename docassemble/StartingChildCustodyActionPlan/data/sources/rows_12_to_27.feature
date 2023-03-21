@@ -17,6 +17,7 @@ Scenario: Row #12
     And I should see the phrase "Check if Alaska has jurisdiction"
     And I should see the phrase "Starting a case when you don’t know where the other parent is"
     And I should see the phrase "Learn about paternity"
+    And I should see the phrase "Talk to the other parent to see if you agree"
     And I should see the phrase "Fill out the forms to start your uncontested custody case"
     And I should see the phrase "Fill out the forms to start your custody case"
     And I should see the phrase "Get more information or help"
@@ -68,6 +69,7 @@ Scenario: Row #16
     And I take a screenshot
     And I should see the phrase "Check if Alaska has jurisdiction"
     And I should see the phrase "Starting a case when you don’t know where the other parent is"
+    And I should see the phrase "Talk to the other parent to see if you agree"
     And I should see the phrase "Fill out the forms to start your uncontested custody case"
     And I should see the phrase "Get more information or help"
     And I should see the phrase "File the original with your local court"
