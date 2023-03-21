@@ -1,4 +1,4 @@
-@rows1to10
+@rows52to99
 Feature: User paths
 
 
@@ -163,8 +163,8 @@ Scenario: Row #88
       | alternate_service | False |  |    
       | paternity | False |  |   
       | which_forms | agree | |
-      | default | False |  |    
-      | domestic_violence | False |  |    
+      | default | True |  |    
+      | domestic_violence | True |  |    
     And I take a screenshot
     And I should see the phrase "Fill out the forms to start your uncontested custody case"
     And I should see the phrase "Get more information or help"
@@ -174,7 +174,7 @@ Scenario: Row #88
     And I should see the phrase "File for Default if the other parent does not respond within 20 days"
     And I download "starting_child_custody_action_plan.pdf" 
     
-Scenario: Row #61
+Scenario: Row #99
     Given I start the interview at "starting_child_custody_case.yml"
     And I get to the question id "final screen" with this data:
       | var | value | trigger |

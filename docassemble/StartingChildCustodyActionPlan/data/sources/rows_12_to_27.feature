@@ -37,7 +37,7 @@ Scenario: Row #15
       | add_jurisdiction_info_to_plan | go |  |
       | alternate_service | True |  |    
       | paternity | True |  |   
-      | which_forms | contested | |
+      | which_forms | both | |
       | default | False |  |    
       | domestic_violence | False |  |    
     And I take a screenshot
@@ -121,7 +121,7 @@ Scenario: Row #22
     And I should see the phrase "Read the “Domestic Relations Procedural Order” or “Standing Order” if the clerk gives you one when you file your case"
     And I should see the phrase "Serve the complaint and summons"
     And I should see the phrase "Learn more about the process"
-    And I should see the phrase "Abuse or domestic violence resources and parenting"
+    And I should see the phrase "Abuse or domestic violence and parenting"
     And I download "starting_child_custody_action_plan.pdf"
     
 Scenario: Row #25

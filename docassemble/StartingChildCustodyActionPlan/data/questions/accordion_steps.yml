@@ -461,7 +461,7 @@ subject: |
   % if which_forms in('agree','both'):
   Abuse or domestic violence resources and reaching an agreement
   % else:
-  Abuse or domestic violence and  parenting
+  Abuse or domestic violence and parenting
   % endif
 content: |
   <div class='step-subheading'>If you are in immediate danger, call 911</div>
