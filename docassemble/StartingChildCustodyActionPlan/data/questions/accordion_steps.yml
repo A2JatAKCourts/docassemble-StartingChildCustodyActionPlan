@@ -78,7 +78,7 @@ code: |
 
         # step_list.append((get_help, "get_help_idx"))
         step_list.append((file_complaint_step, "file_complaint_idx"))
-        step_list.append((drpo_step, "drpo_idx"))
+        step_list.append((read_drpo_step, "read_drpo_idx"))
           
         if which_forms in('contested', 'both'):
           step_list.append((serve_step, "serve_idx"))
@@ -114,7 +114,7 @@ code: |
         
       # step_list.append((get_help, "get_help_idx"))
       step_list.append((file_complaint_step, "file_complaint_idx"))
-      step_list.append((drpo_step, "drpo_idx"))
+      step_list.append((read_drpo_step, "read_drpo_idx"))
 
       if which_forms in('contested', 'both'):
         step_list.append((serve_step, "serve_idx"))
@@ -471,6 +471,27 @@ content: |
     <li>File the original with the court.</li>
   </ul>
   <p>See <a href="http://courts.alaska.gov/shc/family/serve.htm#9">How do I serve answers motions oppositions and other documents?</a> On the court website.</p>
+---
+template: read_drpo_step
+subject: |
+  Step ${ read_drpo_idx }: Read the &ldquo;Domestic Relations Procedural Order&rdquo; or Standing Order if the clerk gives you one when you file your case
+content: |
+  This is the first order from your judge that sets out the basic rules for you and ${ other_party_in_case }  to follow during the case.  Violating this order can affect the outcome of your case.  The order states, unless ${ other_party_in_case } agrees or the court gives permission:
+  
+  % if user_need == 'custody' or (user_need == 'divorce' and minor_children):
+    * Do not take your children out of Alaska.
+  % endif
+  % if user_need == 'divorce':
+    * Do not sell or get rid of marital property.
+  % endif
+    * Do not cancel or change any insurance policy.
+  % if user_need == 'custody' or (user_need == 'divorce' and minor_children):
+  Also, check with your local court for their [parent education requirements](http://courts.alaska.gov/shc/family/shcparent-ed.htm).
+  % endif
+  
+  If you want to do something the order forbids, and ${ other_party_in_case } will not agree, file a motion to ask the court for permission.
+
+  **Wait** for the court's answer before you act. Learn about motions. See [Motions: Requesting an Order from the Court; Opposing a Motion](https://courts.alaska.gov/shc/family/motions.htm).
 ---
 template: drpo_step
 subject: |

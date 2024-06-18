@@ -46,7 +46,7 @@ Scenario: Row #4
     | alternate_service             | True    |         | 
     | paternity                     | True    |         | 
     | which_forms                   | agree   |         | 
-    | default                       | True    |         | 
+    | default_info                       | True    |         | 
     | domestic_violence             | True    |         | 
 #    And I take a screenshot
     And I should see the phrase "Check if Alaska has jurisdiction"
@@ -75,7 +75,7 @@ Scenario: Row #5
     | alternate_service             | True    |         | 
     | paternity                     | True    |         | 
     | which_forms                   | agree   |         | 
-    | default                       | True    |         | 
+    | default_info                  | True    |         | 
     | domestic_violence             | False   |         | 
 #    And I take a screenshot
     And I should see the phrase "Check if Alaska has jurisdiction"
@@ -103,7 +103,7 @@ Scenario: Row #6
     | alternate_service             | True    |         | 
     | paternity                     | True    |         | 
     | which_forms                   | agree   |         | 
-    | default                       | False   |         | 
+    | default_info                  | False   |         | 
     | domestic_violence             | True    |         | 
 #    And I take a screenshot
     And I should see the phrase "Check if Alaska has jurisdiction"
@@ -129,7 +129,7 @@ Scenario: Row #7
     | alternate_service             | True    |         | 
     | paternity                     | True    |         | 
     | which_forms                   | agree   |         | 
-    | default                       | False   |         | 
+    | default_info                  | False   |         | 
     | domestic_violence             | False   |         | 
 #    And I take a screenshot
     And I should see the phrase "Check if Alaska has jurisdiction"
@@ -156,7 +156,7 @@ Scenario: Row #8
     | alternate_service             | True      |         | 
     | paternity                     | True      |         | 
     | which_forms                   | contested |         | 
-    | default                       | True      |         | 
+    | default_info                  | True      |         | 
     | domestic_violence             | True      |         | 
 #    And I take a screenshot
     And I should see the phrase "Check if Alaska has jurisdiction"
@@ -185,7 +185,7 @@ Scenario: Row #9
     | alternate_service             | True      |         | 
     | paternity                     | True      |         | 
     | which_forms                   | contested |         | 
-    | default                       | True      |         | 
+    | default_info                  | True      |         | 
     | domestic_violence             | False     |         | 
 #    And I take a screenshot
     And I should see the phrase "Check if Alaska has jurisdiction"
@@ -213,7 +213,7 @@ Scenario: Row #10
     | alternate_service             | True      |         | 
     | paternity                     | True      |         | 
     | which_forms                   | contested |         | 
-    | default                       | False     |         | 
+    | default_info                  | False     |         | 
     | domestic_violence             | True      |         | 
 #    And I take a screenshot
     And I should see the phrase "Check if Alaska has jurisdiction"
@@ -241,7 +241,7 @@ Scenario: Row #11
     | alternate_service             | True      |         | 
     | paternity                     | True      |         | 
     | which_forms                   | contested |         | 
-    | default                       | False     |         | 
+    | default_info                  | False     |         | 
     | domestic_violence             | True      |         | 
 #    And I take a screenshot
     And I should see the phrase "Check if Alaska has jurisdiction"
