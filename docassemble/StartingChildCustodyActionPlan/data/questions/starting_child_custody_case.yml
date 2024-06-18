@@ -2,6 +2,7 @@
 include:
   - docassemble.AssemblyLine:assembly_line.yml
   - docassemble.AKA2JBranding:custom_organization.yml
+  - docassemble.AKA2JBranding:aka2j_templates.yml
   - accordion_steps.yml
 ---
 metadata:
@@ -120,7 +121,6 @@ fields:
     choices:
       - "I am not married to my child's other parent and I want to ask the court for a Custody or Parenting Plan order": custody
       - "I **am married** to my child's other parent and I want to ask the court for a Custody or Parenting Plan order": divorce
-      - "This is not what I am looking for.": none
   - note: |
       #### <i class="fa-regular fa-lightbulb"></i> Learn more ####
       This Guided Assistant can only give you information about the Alaska court process. To learn about custody laws in your state, find [your state's court website](https://www.ncsc.org/information-and-resources/state-court-websites).
@@ -170,8 +170,8 @@ subquestion: |
   If you get a default judgment, the case can move forward. The other parent does not need to be there and the judge may order the custody arrangement you asked for.  
   
   
-  Do you want your Action Plan to include information about Filing for Default if the other parent does not file an their Answer within 20 days?
-yesno: default
+  Do you want your Action Plan to include information about Filing for Default if the other parent does not file an Answer within 20 days?
+yesno: default_info
 ---
 id: Do you and the other parent agree
 question: |
@@ -334,5 +334,13 @@ attachment:
   name: Starting Child Custody Action Plan
   filename: starting_child_custody_action_plan
   variable name: starting_child_custody_action_plan_attachment[i]
+  skip undefined: True
+  docx template file: starting_child_custody_action_plan.docx
+  tagged pdf: True
+---
+attachment:
+  name: Starting Child Custody Action Plan
+  filename: starting_child_custody_action_plan
+  variable name: docx_starting_child_custody_action_plan_attachment
   skip undefined: True
   docx template file: starting_child_custody_action_plan.docx
