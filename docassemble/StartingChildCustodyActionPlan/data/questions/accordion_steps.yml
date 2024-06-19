@@ -18,7 +18,7 @@ question: |
   # <i class="fa-thin fa-list"></i>Your Personal Action Plan is ready!
 subquestion: |
   
-  Your Personal Action Plan for changing your custody or parenting plan in ${ len(step_list) } steps.
+  Your Personal Action Plan for asking the court for a custody or Parenting Plan in ${ len(step_list) } steps.
   
   % if user_need == 'divorce':
     Because you are married to your children's other parent, you need a different Guided Assistant to build your Plan of Action. See [Starting a Case to End Your Marriage](https://docassemble.akcourts.gov/start/DivorceAndSeparation). 
@@ -81,7 +81,7 @@ code: |
         step_list.append((read_drpo_step, "read_drpo_idx"))
           
         if which_forms in('contested', 'both'):
-          step_list.append((serve_step, "serve_idx"))
+          step_list.append((serve_complaint_step, "serve_complaint_idx"))
           
         step_list.append((expect_after_complaint_step, "expect_after_complaint_idx"))
         
@@ -117,7 +117,7 @@ code: |
       step_list.append((read_drpo_step, "read_drpo_idx"))
 
       if which_forms in('contested', 'both'):
-        step_list.append((serve_step, "serve_idx"))
+        step_list.append((serve_complaint_step, "serve_complaint_idx"))
       
       step_list.append((expect_after_complaint_step, "expect_after_complaint_idx"))
       
@@ -500,6 +500,47 @@ content: |
   <p>This is the first order from your judge that sets out the  basic rules for you and the other parent to follow during the case.  Violating this order can affect the outcome  of your case.  The order usually state  you cannot take your children out of Alaska unless the other parent agrees or  the court gives permission:<br>
   Also, check with your local court for their <a href="http://courts.alaska.gov/shc/family/shcparent-ed.htm">parent education  requirements</a>.</p>
   If you want to do something forbidden by the order and the other parent  does not agree, ask the court by filing a motion and wait for the court's  answer before doing it. You can learn  about motions by answering more questions.   If you want to save this Action Plan, be sure to download, save, or  print it. Then return to the Guided  Assist page and use the Guided Assist search box to find &quot;Asking for an  Order in a Divorce Case When the Issue Can't Wait for the Court's Final  Decision (Filing a Motion) and Responding to a Motion.&quot;
+---
+template: serve_complaint_step
+subject: |
+  Step ${ serve_complaint_idx }: Serve the complaint and summons
+content: |
+  % if (user_need == 'custody' and which_forms == 'both') or (user_need == 'divorce' and legal_separation_or_divorce == 'divorce' and ((minor_children and agree_or_settle_kids == 'do not know') or (not minor_children and agree_or_settle == 'do not know'))):
+  If you file an uncontested case and both of you sign the forms and each of you have a copy, you do not have to "serve" ${other_party_in_case}.
+  % endif
+  <div class="step-subheading">Regular service</div>
+  You have to give ${other_party_in_case} copies of everything you file in court plus the <strong>Summons</strong> and the <strong>Standing Order</strong>. This is called “service.” There are special requirements about how to serve ${other_party_in_case} the forms that start the case.
+
+  Choose how you want to serve the forms that start the case:
+
+    * Certified Mail//Restricted Delivery//Return Receipt, or
+    * Hiring a Process Server.
+  <div class="step-subheading">Certified Mail (less expensive – less than $10)</div>
+
+    * Make sure you pay for certified mail, restricted delivery, and return receipt so that only ${other_party_in_case} can sign for the mail and sends the green card back to you after signing it.
+    * Save the green card in case you need to show you served ${other_party_in_case}.
+
+  Read how to prepare the envelope and the certified mail postal forms in: <strong>How to Serve a Summons</strong>, [CIV-106](https://public.courts.alaska.gov/web/forms/docs/civ-106.pdf).
+
+  <div class="step-subheading">Process Server: (more expensive – up to $65 in Alaska – but may be best if ${other_party_in_case} refused to sign for certified mail)</div>
+
+    * Choose a process server and pay for their services. Find a [statewide list of authorized process servers](https://public.courts.alaska.gov/web/trialcourts/docs/process-servers.pdf). For process servers outside Alaska, contact the local court where ${other_party_in_case} lives, or do internet research.
+    * Fill out the form **Service Instructions**, [CIV-615](https://public.courts.alaska.gov/web/forms/docs/civ-615.pdf). Give this form to the process server so that when they complete service, you will receive a **Proof of Service** form.
+    * If you hire a process service outside Alaska, give them the **Return of Service, SHC-194** [Word](http://www.courts.alaska.gov/shc/family/docs/shc-193.doc) | [PDF](http://www.courts.alaska.gov/shc/family/docs/shc-193n.pdf). They will send it back to you after serving the Summons and Complaint.
+    * Save the **Proof of Service** or **Return of Service** form in case you need to show you served ${other_party_in_case}.
+    * You can read more about serving with a process server in: **How to Serve a Summons**, [CIV-106](https://public.courts.alaska.gov/web/forms/docs/civ-106.pdf).
+
+  <div class = "example">
+  <p class = "heading">Note</p>
+  <p>After the case has started, most documents can be served on ${ other_party_in_case } through first class mail, hand delivery, or TrueFiling. If ${other_party_in_case} has agreed to receive court documents by email, you can email them.</p>
+  </div>
+
+  <div class="step-subheading">Options if regular service does not work</div>
+  <strong>Alternate service</strong>
+  If you cannot find ${other_party_in_case}, you may ask the court for permission to serve ${other_party_in_case} in a different way. For example, you can ask to post on the court’s legal notice website, post to someone’s social media account, email, publish in a newspaper that ${other_party_in_case} reads or post at a shelter or some other location ${other_party_in_case} is known to frequent. Read more about [alternate service](http://courts.alaska.gov/shc/family/shc-184.htm).
+
+  <strong>Special situations</strong>
+  Read more about [special situations](http://www.courts.alaska.gov/shc/family/serve.htm#11) like serving someone in a foreign country, the military or jail.
 ---
 template: serve_step
 subject: |
