@@ -58,10 +58,10 @@ Scenario: Row #15
   And I should see the phrase "What to expect after you file your Complaint"
   And I should see the phrase "Serve the complaint and summons"
   And I should see the phrase "Learn more about the process"
+  And I should see the phrase "Get more information or help"
   And I take a screenshot
   And I download "starting_child_custody_action_plan.pdf"
   And I download "starting_child_custody_action_plan.docx"
-  And I should see the phrase "Get more information or help"
 
 Scenario: Row #16
   Given I start the interview at "starting_child_custody_case.yml"
@@ -85,10 +85,10 @@ Scenario: Row #16
   And I should see the phrase "What to expect after you file your Complaint"
   And I should see the phrase "Abuse or domestic violence resources and reaching an agreement"
   And I should see the phrase "File for Default if the other parent does not respond within 20 days"
+  And I should see the phrase "Get more information or help"
   And I take a screenshot
   And I download "starting_child_custody_action_plan.pdf"
   And I download "starting_child_custody_action_plan.docx"
-  And I should see the phrase "Get more information or help"
 
 Scenario: Row #21
   Given I start the interview at "starting_child_custody_case.yml"
@@ -112,10 +112,10 @@ Scenario: Row #21
   And I should see the phrase "Serve the complaint and summons"
   And I should see the phrase "Learn more about the process"
   And I should see the phrase "File for Default if the other parent does not respond within 20 days"
+  And I should see the phrase "Get more information or help"
   And I take a screenshot
   And I download "starting_child_custody_action_plan.pdf"
   And I download "starting_child_custody_action_plan.docx"
-  And I should see the phrase "Get more information or help"
 
 Scenario: Row #22
   Given I start the interview at "starting_child_custody_case.yml"
@@ -139,10 +139,10 @@ Scenario: Row #22
   And I should see the phrase "Serve the complaint and summons"
   And I should see the phrase "Learn more about the process"
   And I should see the phrase "Abuse or domestic violence and parenting"
+  And I should see the phrase "Get more information or help"
   And I take a screenshot
   And I download "starting_child_custody_action_plan.pdf"
   And I download "starting_child_custody_action_plan.docx"
-  And I should see the phrase "Get more information or help"
 
 Scenario: Row #25
   Given I start the interview at "starting_child_custody_case.yml"
@@ -167,7 +167,7 @@ Scenario: Row #25
   And I should see the phrase "Serve the complaint and summons"
   And I should see the phrase "Learn more about the process"
   And I should see the phrase "File for Default if the other parent does not respond within 20 days"
+  And I should see the phrase "Get more information or help"
   And I take a screenshot
   And I download "starting_child_custody_action_plan.pdf"
   And I download "starting_child_custody_action_plan.docx"
-  And I should see the phrase "Get more information or help"
