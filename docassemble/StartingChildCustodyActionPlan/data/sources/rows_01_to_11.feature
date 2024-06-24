@@ -17,7 +17,7 @@ Feature: User paths
     And I should see the phrase "Look at the court’s self-help web pages"
     And I should see the phrase "Get more information or help"
     And I take a screenshot
-    # And I download "starting_child_custody_action_plan.pdf"
+    And I download "starting_child_custody_action_plan.pdf"
     And I download "starting_child_custody_action_plan.docx"
 
   @row3
@@ -32,7 +32,7 @@ Feature: User paths
     And I should see the phrase "Check if Alaska has jurisdiction"
     And I should see the phrase "Get more information or help"
     And I take a screenshot
-    # And I download "starting_child_custody_action_plan.pdf"
+    And I download "starting_child_custody_action_plan.pdf"
     And I download "starting_child_custody_action_plan.docx"
 
   @row4
@@ -61,7 +61,7 @@ Feature: User paths
     And I should see the phrase "File for Default if the other parent does not respond within 20 days"
     And I should see the phrase "Get more information or help"
     And I take a screenshot
-    # And I download "starting_child_custody_action_plan.pdf"
+    And I download "starting_child_custody_action_plan.pdf"
     And I download "starting_child_custody_action_plan.docx"
 
   @row5
@@ -89,7 +89,7 @@ Feature: User paths
     And I should see the phrase "File for Default if the other parent does not respond within 20 days"
     And I should see the phrase "Get more information or help"
     And I take a screenshot
-    # And I download "starting_child_custody_action_plan.pdf"
+    And I download "starting_child_custody_action_plan.pdf"
     And I download "starting_child_custody_action_plan.docx"
 
   @row6
@@ -116,7 +116,7 @@ Feature: User paths
     And I should see the phrase "Abuse or domestic violence resources and reaching an agreement"
     And I should see the phrase "Get more information or help"
     And I take a screenshot
-    # And I download "starting_child_custody_action_plan.pdf"
+    And I download "starting_child_custody_action_plan.pdf"
     And I download "starting_child_custody_action_plan.docx"
 
   Scenario: Row #7
@@ -143,7 +143,7 @@ Feature: User paths
     And I should see the phrase "What to expect after you file your Complaint"
     And I should see the phrase "Get more information or help"
     And I take a screenshot
-    # And I download "starting_child_custody_action_plan.pdf"
+    And I download "starting_child_custody_action_plan.pdf"
     And I download "starting_child_custody_action_plan.docx"
 
   Scenario: Row #8
@@ -172,7 +172,7 @@ Feature: User paths
     And I should see the phrase "File for Default if the other parent does not respond within 20 days"
     And I should see the phrase "Get more information or help"
     And I take a screenshot
-    # And I download "starting_child_custody_action_plan.pdf"
+    And I download "starting_child_custody_action_plan.pdf"
     And I download "starting_child_custody_action_plan.docx"
 
   Scenario: Row #9
@@ -200,7 +200,7 @@ Feature: User paths
     And I should see the phrase "File for Default if the other parent does not respond within 20 days"
     And I should see the phrase "Get more information or help"
     And I take a screenshot
-    # And I download "starting_child_custody_action_plan.pdf"
+    And I download "starting_child_custody_action_plan.pdf"
     And I download "starting_child_custody_action_plan.docx"
 
   Scenario: Row #10
@@ -228,7 +228,7 @@ Feature: User paths
     And I should see the phrase "Abuse or domestic violence and parenting"
     And I should see the phrase "Get more information or help"
     And I take a screenshot
-    # And I download "starting_child_custody_action_plan.pdf"
+    And I download "starting_child_custody_action_plan.pdf"
     And I download "starting_child_custody_action_plan.docx"
 
   Scenario: Row #11
@@ -255,5 +255,5 @@ Feature: User paths
     And I should see the phrase "Learn more about the process"
     And I should see the phrase "Get more information or help"
     And I take a screenshot
-    # And I download "starting_child_custody_action_plan.pdf"
+    And I download "starting_child_custody_action_plan.pdf"
     And I download "starting_child_custody_action_plan.docx"
