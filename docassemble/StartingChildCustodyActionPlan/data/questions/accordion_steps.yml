@@ -1,3 +1,16 @@
+comment: |
+  After testing:
+  1. Replace:
+      ${ al_user_bundle.download_list_html() }
+      [get the docx file](${ docx_starting_child_custody_action_plan_attachment.docx.url_for() })
+    with:
+      ${ download_buttons_html(al_user_bundle) }
+  2. comment out:
+       script: |
+         <script>
+           Array.from(document.querySelectorAll('.al_collapse_template .collapse')).forEach((elem) => { elem.className += " show" })
+         </script>
+---
 id: final screen
 decoration: pen-to-square
 event: confirmation_and_download
@@ -5,38 +18,62 @@ question: |
   # <i class="fa-thin fa-list"></i>Your Personal Action Plan is ready!
 subquestion: |
   
-  Your Personal Action Plan for changing your custody or parenting plan in ${ len(step_list) } steps.
+  Your Personal Action Plan for asking the court for a custody or Parenting Plan in ${ len(step_list) } steps.
   
   % if user_need == 'divorce':
-    Because you are married to your children's other parent, you need a different Guided Assistant to build your Plan of Action. See [Starting a Case to End Your Marriage or Legally Separate](https://docassemble.akcourts.gov/start/DivorceAndSeparation). 
+    Because you are married to your children's other parent, you need a different Guided Assistant to build your Plan of Action. See [Starting a Case to End Your Marriage](https://docassemble.akcourts.gov/start/DivorceAndSeparation). 
   % endif
  
+  % if "docassembledev" in interview_url():
+  <button id="akc_expand_all" class="btn other stuff">Expand all</button>
+  <button id="akc_collapse_all" class="btn other stuff">Collapse all</button>
+  % endif
+  
+  
   % for iteration_index, step_tuple in enumerate( step_list ):
   ${ collapse_template(step_tuple[0], closed_icon="plus", open_icon="minus") }
   % endfor
   
-   ${ al_user_bundle.download_list_html() }
+  ${ al_user_bundle.download_list_html() }
+  
+  % if "docassembledev" in interview_url():
+  [get the docx file](${ docx_starting_child_custody_action_plan_attachment.docx.url_for() })
+  % endif 
 buttons:
   - Start over: restart
+script: |
+  <script>
+  let expander = $("#akc_expand_all")
+  expander.on("click", function () {
+   Array.from(document.querySelectorAll('.al_collapse_template .collapse')).forEach((elem) => { elem.className += " show" })
+  })
+  
+  let collapser = $("#akc_collapse_all")
+  collapser.on("click", function () {
+      Array.from(document.querySelectorAll('.al_collapse_template .collapse')).forEach((elem) => { elem.className = elem.className.replace(" show", "" ) })
+  })
+  </script>  
 ---
 code: |
   step_list = []
   
-  if user_need in ('none', 'divorce'):
+  other_party_in_case  = 'the other parent'
+  
+  if user_need == 'divorce':
     step_list.append((wrong_tf, "wrong_tf_idx"))
     step_list.append((wrong_tf2, "wrong_tf2_idx"))
-    step_list.append((get_help, "get_help_idx"))
+  #  step_list.append((get_help, "get_help_idx"))
   
   else:
     if not jurisdiction:
       if add_jurisdiction_info_to_plan == 'stop':
         step_list.append((jurisdiction_step, "jurisdiction_idx"))
-        step_list.append((get_help, "get_help_idx"))
+      #  step_list.append((get_help, "get_help_idx"))
       else:
         step_list.append((jurisdiction_step, "jurisdiction_idx"))
         if alternate_service:
           step_list.append((alternate_service_step, "alternate_service_idx"))
-          default
+          default_info
 
         if paternity:
           step_list.append((paternity_step, "paternity_idx"))
@@ -51,24 +88,28 @@ code: |
           step_list.append((uncontested_forms_step, "uncontested_forms_idx"))
           step_list.append((contested_forms_step, "contested_forms_idx"))
 
-        step_list.append((get_help, "get_help_idx"))
-        step_list.append((file_step, "file_idx"))
-        step_list.append((drpo_step, "drpo_idx"))
+        # step_list.append((get_help, "get_help_idx"))
+        step_list.append((file_complaint_step, "file_complaint_idx"))
+        step_list.append((read_drpo_step, "read_drpo_idx"))
           
         if which_forms in('contested', 'both'):
-          step_list.append((serve_step, "serve_idx"))
+          step_list.append((serve_complaint_step, "serve_complaint_idx"))
+          
+        step_list.append((expect_after_complaint_step, "expect_after_complaint_idx"))
+        
+        if which_forms in('contested', 'both'):
           step_list.append((more_process_step, "more_process_idx"))
 
         if domestic_violence:
           step_list.append((domestic_violence_step, "domestic_violence_idx"))
           
-        if default:
-          step_list.append((default_step, "default_idx"))
+        if default_info:
+          step_list.append((default_info_step, "default_info_idx"))
   
     else:
       if alternate_service:
         step_list.append((alternate_service_step, "alternate_service_idx"))
-        default
+        default_info
 
       if paternity:
         step_list.append((paternity_step, "paternity_idx"))
@@ -83,20 +124,26 @@ code: |
         step_list.append((uncontested_forms_step, "uncontested_forms_idx"))
         step_list.append((contested_forms_step, "contested_forms_idx"))
         
-      step_list.append((get_help, "get_help_idx"))
-      step_list.append((file_step, "file_idx"))
-      step_list.append((drpo_step, "drpo_idx"))
+      # step_list.append((get_help, "get_help_idx"))
+      step_list.append((file_complaint_step, "file_complaint_idx"))
+      step_list.append((read_drpo_step, "read_drpo_idx"))
 
       if which_forms in('contested', 'both'):
-        step_list.append((serve_step, "serve_idx"))
+        step_list.append((serve_complaint_step, "serve_complaint_idx"))
+      
+      step_list.append((expect_after_complaint_step, "expect_after_complaint_idx"))
+      
+      if which_forms in('contested', 'both'):        
         step_list.append((more_process_step, "more_process_idx"))
 
       if domestic_violence:
         step_list.append((domestic_violence_step, "domestic_violence_idx"))
 
-      if default:
-        step_list.append((default_step, "default_idx"))
-     
+      if default_info:
+        step_list.append((default_info_step, "default_info_idx"))
+  
+  step_list.append((get_help, "get_help_idx"))  
+  
   for iter_idx, step_tuple in enumerate( step_list ):
     define(step_tuple[ 1 ], iter_idx + 1)
   get_steps = True
@@ -105,60 +152,58 @@ template: wrong_tf
 subject: |
   Step ${ wrong_tf_idx }: Try another Guided Assistant
 content: | 
-  * [Asking for Child Support](https://docassemble.akcourts.gov/start/AskingForChildSupport)
-  * [Starting A Case to End Your Marriage](https://LegalNav.org/guided_assistant/starting-a-case-to-end-your-marriage/?location=alaska)
-  * [Responding if Your Spouse Starts a Case to End Your Marriage](https://LegalNav.org/guided_assistant/responding-if-your-spouse-wants-to-or-starts-a-case-to-end-your-marriage/?location=alaska)
-  * [Responding if Your Spouse Starts a Custody Case](https://LegalNav.org/guided_assistant/responding-if-your-spouse-wants-to-or-starts-a-custody-case/?location=Alaska)
-  * [Enforcing a Custody Order](https://docassemble.akcourts.gov/start/docassemble-ChangingChildCustody )
-  * [Changing a Custody Order](https://docassemble.akcourts.gov/start/docassemble-ChangingChildCustody )
+  [Starting A Case to End Your Marriage](https://docassemble.akcourts.gov/start/DivorceAndSeparation)
+  
+  [Responding if Your Spouse Starts a Case to End Your Marriage](https://docassemble.akcourts.gov/start/DivorceAndSeparation)
+  
+  [Changing your custody or Parenting Plan order](https://docassemble.akcourts.gov/start/docassemble-ChangingChildCustody)
+  
+  [Enforcing a Custody Order](https://docassemble.akcourts.gov/start/docassemble-ChangingChildCustody)
+  
+  [Asking for Child Support](https://docassemble.akcourts.gov/start/AskingForChildSupport)
+  
+  [Changing or Enforcing Child Support](https://docassemble.akcourts.gov/start/ChangingEnforcingChildSupport)
+
 --- 
 template: wrong_tf2
 subject: | 
   Step ${ wrong_tf2_idx }: Look at the court's self-help web pages
 content: | 
-  * [Forms and Information about Child Support](https://courts.alaska.gov/shc/family/support.htm)
-  * [Asking for an Order / filing a motion](https://courts.alaska.gov/shc/family/motions.htm)
-  * [Family Law Home](https://courts.alaska.gov/shc/family/index.htm)
+  [Forms and Information about Child Support](https://courts.alaska.gov/shc/family/support.htm)
+  
+  [Asking for an Order / filing a motion](https://courts.alaska.gov/shc/family/motions.htm)
+  
+  [Family Law Home](https://courts.alaska.gov/shc/family)
 ---
-template: get_help
-subject: |
-  Step ${ get_help_idx }: Get more information or help
-content: |
-  For help with forms or understanding the process, call the [Family Law Self-Help Center](https://courts.alaska.gov/shc/family/selfhelp.htm)
-  (907) 264-0851 or
-  (866) 279-0851 from an Alaska-based phone outside of Anchorage.
-  
-  Many lawyers offer free or flat fee consultations without having to hire them for the whole case. [Find a Lawyer](https://courts.alaska.gov/shc/shclawyer.htm).
-  
-  Depending on your income, you may qualify for [Alaska Free Legal Answers](https://legalnav.org/resource/alaska-free-legal-answers).
-  
-  Depending on your income and circumstances, you may qualify for a free lawyer from [Alaska Legal Services](alsc-law.org/apply-for-services).
+#  template: get_help
+#  subject: |
+#    Step ${ get_help_idx }: Get more information or help
+#  content: |
+#    For help with forms or understanding the process, call the [Family Law Self-Help Center](https://courts.alaska.gov/shc/family/selfhelp.htm)
+#    (907) 264-0851 or
+#    (866) 279-0851 from an Alaska-based phone outside of Anchorage.
+#    
+#    Many lawyers offer free or flat fee consultations without having to hire them for the whole case. [Find a Lawyer](https://courts.alaska.gov/shc/shclawyer.htm).
+#    
+#    Depending on your income, you may qualify for [Alaska Free Legal Answers](https://legalnav.org/resource/alaska-free-legal-answers).
+#    
+#    Depending on your income and circumstances, you may qualify for a free lawyer from [Alaska Legal Services](alsc-law.org/apply-for-services).
 ---
 template: alternate_service_step
 subject: |
-  Step ${ alternate_service_idx }: Starting a case when you don't know where the other parent is
+  Step ${ alternate_service_idx }: 
+  % if user_need == 'divorce':
+  Learn about starting a case when you do not know where ${other_party_in_case} is
+  % elif user_need == 'custody':
+  Starting a case when you do not know where ${other_party_in_case} is
+  % endif
 content: |
-  <p>Usually when you start a case you must give the other parent  every form you file with the court.  This  is called "service."  If you don't know  where the other parent is you can ask the court to let you use "alternate  service," which is described below.</p>
-  <div class='step-subheading'>After you start your case by filing a complaint and other documents, and  can't serve the other parent, ask the court to let you use alternate service.</div>
-  <ul>
-  <li>Read: <a href="http://courts.alaska.gov/shc/family/shctips.htm">Tips on Locating People</a></li>
-  <li>Review and fill out the <strong>Request to Serve Defendant by Posting or Alternative Service, and  Affidavit of Diligent Inquiry</strong>, <a href="https://public.courts.alaska.gov/web/forms/docs/civ-145.pdf">CIV-145</a> (this form tells you the things you must do to try to find the other parent  before asking for alternate service).</li>
-  <li>Make 1 copy of the form and any attachments.</li>
-  <li>File the original documents at your local court.  Keep one copy for your records.</li>
-  </ul>
-  <div class='step-subheading'>Final Steps</div>
-  <ul>
-  <li>Now you wait. The clerk will sign the <strong>Notice to Absent Defendant</strong> if the court  finds you did enough to try to serve the other parent. The court will then post  the notice on the Alaska Court System's legal notice website for 4 weeks in a  row.</li>
-  <li>Before the last week of posting, you must send a  copy of the notice and the complaint by regular first class mail and registered  or certified mail to the other parent at their last known residence or  workplace. However, if you have already tried to serve the other parent by  certified mail, then before the last week of posting, just send by regular  first class mail. File:</li>
-  <ul>
-    <li><strong>Affidavit,  SHC-1625</strong> <a href="http://courts.alaska.gov/shc/family/docs/shc-1625.doc">Word</a> | <a href="http://courts.alaska.gov/shc/family/docs/shc-1625n.pdf">PDF</a> (1  week before posting ends that states you):</li>
-    <ul>
-      <li>tried to serve the other parent by regular first  class mail and registered or certified mail <strong>or</strong></li>
-      <li>could <strong>not</strong> serve by mail because you cannot find the other parent's last known mailing  address</li>
-    </ul>
-  </ul>
-  <li>After the notice has been posted on the legal  notice website for 4 weeks, the clerk will complete a certificate of service of  posting to the Alaska Court System's legal notice website. The court will put  the certificate of service of posting in your case file and send you a copy in  the mail.</li>
-  </ul>
+  When you start a case you must give ${other_party_in_case} a copy of every form you file with the court.  This is called “service.” If you do not know where ${other_party_in_case} is, you can ask the court to let you use “alternate service.” 
+  
+  1. Read: [Tips on Locating People](https://courts.alaska.gov/shc/family/shctips.htm).
+  2.	Review and fill out the **Request to Serve Defendant by Posting or Alternative Service, and Affidavit of Diligent Inquiry, CIV-145** [Fill-in PDF](https://public.courts.alaska.gov/web/forms/docs/civ-145.pdf)
+    * This form tells you the things you must do to try to find ${other_party_in_case} before you can aks for alternate service.
+    * **Wait** to sign this form until you are in front of someone who has the power to take oaths, like a notary public. The court clerk can do this for free. Bring a valid photo ID with your signature on it with you.
 ---
 template: paternity_step
 subject: |
@@ -377,6 +422,55 @@ content: |
   </ul>
   <p>Jurisdiction can be very complicated.  For example, if a baby is less than 6 months old and has moved between  states, there may not be a "home state."  This is one example of an exception when the Alaska court may be able to  decide issues about a child that hasn't lived here for 6 months.  <a href="https://courts.alaska.gov/shc/shclawyer.htm">Talking to a lawyer</a> can  help you decide which is the best state for your case.</p>
 ---
+template: file_complaint_step
+subject: |
+  Step ${ file_complaint_idx }: File the original with your local court
+content: |
+  <ol>
+  <li>Make  2 copies of your forms: 1 copy for your own records and 1 copy for ${ other_party_in_case }.
+  % if (user_need == 'divorce' and ((legal_separation_or_divorce == 'divorce' and ((minor_children and agree_or_settle_kids == 'yes') or (not minor_children  and agree_or_settle in('no prop debt or pregnancy','agree','do not know')))) or (legal_separation_or_divorce  == 'legal separation' and agree_or_settle_kids == 'yes'))) or (user_need == 'custody' and which_forms in('agree','both')):
+  % if (user_need == 'divorce' and  legal_separation_or_divorce == 'divorce' and ((minor_children and agree_or_settle_kids == 'do not know') or (not  minor_children and agree_or_settle == 'do not know'))) or (user_need == 'custody' and which_forms == 'both'):
+  If
+  % else:
+  Because
+  % endif
+  you both signed the forms and both have a copy, you do not have to formally  &quot;serve&quot; ${ other_party_in_case } by mailing documents or using a process server.
+  % endif
+  </li>
+  <li>Find the closest Alaska court to file your paperwork on the <a href="http://courts.alaska.gov/courtdir/index.htm#trial">Court Directory</a>.</li>
+  <li>Give the original version of your documents to the court. This is called "filing" your documents. You can:
+  <ul>
+  <li>Deliver the documents to the court yourself.</li>
+  <li>Mail the documents by first-class mail.</li>
+  <li>Use the court's TrueFiling eFiling system to  send the documents to the court electronically, if your local court uses  TrueFiling. <a href="https://courts.alaska.gov/efile/index.htm#current-courts">See if your  court uses TrueFiling</a>.</li>
+  <li>File the documents by email, if your local court  accepts email filings. <a href="https://courts.alaska.gov/courtdir/efiling.htm">See if your court accepts  documents by email</a>. </li>
+  </ul></li>
+  <li>Pay  the $250 filing fee to start your case.<br>
+  If you cannot afford the filing fee, you can ask the court to waive it:
+  <ul>
+  <li>Call  the <a href="https://courts.alaska.gov/shc/family/shcabout.htm">Family Law Self-Help Center</a><br>
+    (907)264-0851, or</br>
+    (866)279-0851,</br>
+  or</li>
+  <li>Use <strong>Exemption From the Payment of Fees, </strong><a href="https://public.courts.alaska.gov/web/forms/docs/tf-920.pdf" target="_blank"><strong>TF-920</strong></a> [<a href="https://public.courts.alaska.gov/web/forms/docs/tf-920.pdf">Fill-In PDF</a>].</li>
+  <div class = "example">
+  <p class = "heading">Note</p>
+  <p>Check with your local court to make sure you understand the procedure to follow after the court decides whether or not to grant your exemption.</p>
+  </ul></li>
+  <li>After  you pay the filing fee or the court says you can file for free, the court clerk will give  you 2 copies of:
+  <ul>
+  <li>a "<strong>Summons</strong>" and</li>
+  <li>a "<strong>Standing Order</strong>." The Standing order has important information about your case. Usually the clerk will give you this order when you file.</li>
+  </ul>
+  1 copy is for you. The other copy is for ${ other_party_in_case }.</li>
+  </ol>
+  % if (user_need == 'divorce' and  legal_separation_or_divorce == 'divorce' and  ((minor_children  and agree_or_settle_kids in('yes', 'do not know'))  or (not  minor_children and agree_or_settle in('no prop debt or pregnancy','agree','do  not know')))) or (user_need == 'custody' and which_forms  in('agree','both')):
+  <div class = "example">
+  <p class = "heading">Note</p>
+  <p>If you file an uncontested complaint you may not get a <strong>Summons</strong>.</p>
+  </div>
+  % endif
+---
 template: file_step
 subject: |
   Step ${ file_idx }: File the original with your local court
@@ -390,6 +484,27 @@ content: |
   </ul>
   <p>See <a href="http://courts.alaska.gov/shc/family/serve.htm#9">How do I serve answers motions oppositions and other documents?</a> On the court website.</p>
 ---
+template: read_drpo_step
+subject: |
+  Step ${ read_drpo_idx }: Read the &ldquo;Domestic Relations Procedural Order&rdquo; or Standing Order if the clerk gives you one when you file your case
+content: |
+  This is the first order from your judge that sets out the basic rules for you and ${ other_party_in_case }  to follow during the case.  Violating this order can affect the outcome of your case.  The order states, unless ${ other_party_in_case } agrees or the court gives permission:
+  
+  % if user_need == 'custody' or (user_need == 'divorce' and minor_children):
+    * Do not take your children out of Alaska.
+  % endif
+  % if user_need == 'divorce':
+    * Do not sell or get rid of marital property.
+  % endif
+    * Do not cancel or change any insurance policy.
+  % if user_need == 'custody' or (user_need == 'divorce' and minor_children):
+  Also, check with your local court for their [parent education requirements](http://courts.alaska.gov/shc/family/shcparent-ed.htm).
+  % endif
+  
+  If you want to do something the order forbids, and ${ other_party_in_case } will not agree, file a motion to ask the court for permission.
+
+  **Wait** for the court's answer before you act. Learn about motions. See [Motions: Requesting an Order from the Court; Opposing a Motion](https://courts.alaska.gov/shc/family/motions.htm).
+---
 template: drpo_step
 subject: |
   Step ${ drpo_idx }: Read the "Domestic Relations Procedural Order" or "Standing Order" if the clerk gives you one when you file your case
@@ -397,6 +512,47 @@ content: |
   <p>This is the first order from your judge that sets out the  basic rules for you and the other parent to follow during the case.  Violating this order can affect the outcome  of your case.  The order usually state  you cannot take your children out of Alaska unless the other parent agrees or  the court gives permission:<br>
   Also, check with your local court for their <a href="http://courts.alaska.gov/shc/family/shcparent-ed.htm">parent education  requirements</a>.</p>
   If you want to do something forbidden by the order and the other parent  does not agree, ask the court by filing a motion and wait for the court's  answer before doing it. You can learn  about motions by answering more questions.   If you want to save this Action Plan, be sure to download, save, or  print it. Then return to the Guided  Assist page and use the Guided Assist search box to find &quot;Asking for an  Order in a Divorce Case When the Issue Can't Wait for the Court's Final  Decision (Filing a Motion) and Responding to a Motion.&quot;
+---
+template: serve_complaint_step
+subject: |
+  Step ${ serve_complaint_idx }: Serve the complaint and summons
+content: |
+  % if (user_need == 'custody' and which_forms == 'both') or (user_need == 'divorce' and legal_separation_or_divorce == 'divorce' and ((minor_children and agree_or_settle_kids == 'do not know') or (not minor_children and agree_or_settle == 'do not know'))):
+  If you file an uncontested case and both of you sign the forms and each of you have a copy, you do not have to "serve" ${other_party_in_case}.
+  % endif
+  <div class="step-subheading">Regular service</div>
+  You have to give ${other_party_in_case} copies of everything you file in court plus the <strong>Summons</strong> and the <strong>Standing Order</strong>. This is called “service.” There are special requirements about how to serve ${other_party_in_case} the forms that start the case.
+
+  Choose how you want to serve the forms that start the case:
+
+    * Certified Mail//Restricted Delivery//Return Receipt, or
+    * Hiring a Process Server.
+  <div class="step-subheading">Certified Mail (less expensive – less than $10)</div>
+
+    * Make sure you pay for certified mail, restricted delivery, and return receipt so that only ${other_party_in_case} can sign for the mail and sends the green card back to you after signing it.
+    * Save the green card in case you need to show you served ${other_party_in_case}.
+
+  Read how to prepare the envelope and the certified mail postal forms in: <strong>How to Serve a Summons</strong>, [CIV-106](https://public.courts.alaska.gov/web/forms/docs/civ-106.pdf).
+
+  <div class="step-subheading">Process Server: (more expensive – up to $65 in Alaska – but may be best if ${other_party_in_case} refused to sign for certified mail)</div>
+
+    * Choose a process server and pay for their services. Find a [statewide list of authorized process servers](https://public.courts.alaska.gov/web/trialcourts/docs/process-servers.pdf). For process servers outside Alaska, contact the local court where ${other_party_in_case} lives, or do internet research.
+    * Fill out the form **Service Instructions**, [CIV-615](https://public.courts.alaska.gov/web/forms/docs/civ-615.pdf). Give this form to the process server so that when they complete service, you will receive a **Proof of Service** form.
+    * If you hire a process service outside Alaska, give them the **Return of Service, SHC-194** [Word](http://www.courts.alaska.gov/shc/family/docs/shc-193.doc) | [PDF](http://www.courts.alaska.gov/shc/family/docs/shc-193n.pdf). They will send it back to you after serving the Summons and Complaint.
+    * Save the **Proof of Service** or **Return of Service** form in case you need to show you served ${other_party_in_case}.
+    * You can read more about serving with a process server in: **How to Serve a Summons**, [CIV-106](https://public.courts.alaska.gov/web/forms/docs/civ-106.pdf).
+
+  <div class = "example">
+  <p class = "heading">Note</p>
+  <p>After the case has started, most documents can be served on ${ other_party_in_case } through first class mail, hand delivery, or TrueFiling. If ${other_party_in_case} has agreed to receive court documents by email, you can email them.</p>
+  </div>
+
+  <div class="step-subheading">Options if regular service does not work</div>
+  <strong>Alternate service</strong>
+  If you cannot find ${other_party_in_case}, you may ask the court for permission to serve ${other_party_in_case} in a different way. For example, you can ask to post on the court’s legal notice website, post to someone’s social media account, email, publish in a newspaper that ${other_party_in_case} reads or post at a shelter or some other location ${other_party_in_case} is known to frequent. Read more about [alternate service](http://courts.alaska.gov/shc/family/shc-184.htm).
+
+  <strong>Special situations</strong>
+  Read more about [special situations](http://www.courts.alaska.gov/shc/family/serve.htm#11) like serving someone in a foreign country, the military or jail.
 ---
 template: serve_step
 subject: |
@@ -428,6 +584,66 @@ content: |
     If you cannot find the other parent, you may ask the court for  permission to serve the other parent in a different way. For example, you can  ask to post on the court's legal notice website, post to someone's social media  account, email, publish in a newspaper that the other parent reads or post at a  shelter or some other location the other parent is known to frequent.  Read more about <a href="http://courts.alaska.gov/shc/family/shc-184.htm">alternate service</a>.<br>
     <strong>Special Situations</strong><br>
     Read more about <a href="http://www.courts.alaska.gov/shc/family/serve.htm#11">special situations</a> like serving someone in a foreign country, the military or jail.</p>
+---
+template: expect_after_complaint_step
+subject: |
+  Step ${ expect_after_complaint_idx }: What to expect after you file your Complaint
+content: |
+  % if (user_need == 'divorce' and not know_spouse_whereabouts) or (user_need == 'custody' and alternate_service):
+    * Now you wait.
+  % if user_need == 'custody' and alternate_service:
+  The clerk will sign the **Notice to Absent Defendant** if the court finds you did enough to try to serve ${ other_party_in_case }. 
+  % elif user_need == 'divorce' and not know_spouse_whereabouts:
+  The clerk will sign the **Notice to Absent Spouse** if the court finds you did enough to try to serve ${ other_party_in_case }.
+  % endif
+  The court will then post the notice on the Alaska Court System's legal notice website for 4 weeks in a row.
+  % if user_need == 'divorce' and not minor_children and legal_separation_or_divorce == 'divorce' and agree_or_settle == 'no prop debt or pregnancy':
+    * After the notice has been posted 4 weeks, fill out and file the **Proof of Notice**, [DR-225](https://public.courts.alaska.gov/web/forms/docs/dr-225.pdf). When you file your **Proof of Notice**, ask the clerk's office for instructions on setting a hearing date. The hearing must be at least 30 days after the end of the 4 weeks the notice was posted on the court’s website.
+    * Attend the hearing. The court will ask you questions about trying to find ${ other_party_in_case } and about ending the marriage.
+  % else:
+  Before the last week of posting, you must send a copy of the Notice and the Complaint by regular first class mail and registered or certified mail to ${ other_party_in_case } at ${ other_party_in_case }'s last known residence or workplace. However, if you have already tried to serve ${ other_party_in_case } by certified mail, then before the last week of posting, just send by regular first class mail. File:
+    *	**Affidavit, SHC-1625** [Word](http://courts.alaska.gov/shc/family/docs/shc-1625.doc) | [PDF](http://courts.alaska.gov/shc/family/docs/shc-1625n.pdf) (1 week before posting ends that states you):
+         * tried to serve ${ other_party_in_case } by regular first class mail and registered or certified mail, or
+         * could not serve by mail because you cannot find ${ other_party_in_case }'s last known mailing address.
+    *	After the Notice has been posted on the legal notice website for 4 weeks, the clerk will complete a certificate of service of posting to the Alaska Court System’s legal notice website. The court will put the certificate of service of posting in your case file and send you a copy in the mail.
+  % endif
+  % endif
+  
+  % if (user_need == 'divorce' and ((legal_separation_or_divorce == 'divorce' and ((minor_children and agree_or_settle_kids == 'yes') or (not minor_children and agree_or_settle in('no prop debt or pregnancy','agree')))) or (legal_separation_or_divorce == 'legal separation' and agree_or_settle_kids == 'yes'))) or (user_need == 'custody' and which_forms == 'agree'):
+  <div class="step-subheading">The court will set a hearing</div>
+  They will send you a notice with the date and time of the hearing.
+  % else:
+  % if (user_need == 'divorce' and legal_separation_or_divorce == 'divorce' and ((minor_children and agree_or_settle_kids == 'do not know') or (not minor_children and agree_or_settle == 'do not know'))) or (user_need == 'custody' and which_forms == 'both'):
+  If you and ${ other_party_in_case } do not agree about all the issues in your case and you file a complaint on your own, ${ other_party_in_case } may file an Answer.
+  % else:
+  <div class="step-subheading">${ capitalize(other_party_in_case) } may file an Answer</div>
+  % endif
+  ${ capitalize(other_party_in_case) } has 20 days to file an Answer.
+  
+  ${ capitalize(other_party_in_case) }'s is their response to what you put in your Complaint.
+
+  <div class="step-subheading">If ${ other_party_in_case } does not file an Answer in 20 days, you can ask for a default judgment</div>
+
+  A default judgment is when the court decides your case without hearing from ${ other_party_in_case }.
+  
+  % if not default_info:
+  Read [Filing for Default in Divorce and Custody Cases](https://courts.alaska.gov/shc/family/shcdefault.htm).
+  % else:
+  See Step ${ default_info_idx }: File for default if ${ other_party_in_case } does not respond within 20 days.
+  % endif
+  If ${ other_party_in_case } does not file an Answer and you do nothing, the court will close your case after 120 days.
+  <div class="step-subheading">The court will set a hearing and send you a notice with the date and time</div>
+  
+  % if user_need == 'divorce':
+  Within 45 days of your spouse filing their answer, both of you are supposed to tell each other about all your property and debt. Fill out and give your spouse:
+
+  **Civil Rule 26.1 Questionnaire, SHC-1010** [Word](https://courts.alaska.gov/shc/family/docs/shc-1010.doc) | [PDF](https://courts.alaska.gov/shc/family/docs/shc-1010n.pdf)
+
+  **Property & Debt Worksheet, SHC-1000** [Word](https://courts.alaska.gov/shc/family/docs/shc-1000.doc) | [PDF](https://courts.alaska.gov/shc/family/docs/shc-1000n.pdf)
+  
+  Read [Dividing Property & Debt](https://courts.alaska.gov/shc/family/property.htm)
+  % endif
+  % endif
 ---
 template: more_process_step
 subject: |
@@ -517,9 +733,9 @@ content: |
     <li>File <strong>Direction  to Seal Child Custody Jurisdiction Affidavit</strong>, <a href="https://public.courts.alaska.gov/web/forms/docs/dr-151.pdf">DR-151</a>.</li>
   </ul>
 ---
-template: default_step
+template: default_info_step
 subject: |
-  Step ${ default_idx }: File for Default if the other parent does not respond within 20 days
+  Step ${ default_info_idx }: File for Default if the other parent does not respond within 20 days
 content: | 
   <div class='step-subheading'>Wait for 20 days</div>
   <p>If the other parent does not file an Answer within 20 days  of being served your complaint, you may ask the court to "default" the other  side and grant you everything you asked for.   To do this, you must have proof that you served the other party  according to the rules.</p>
