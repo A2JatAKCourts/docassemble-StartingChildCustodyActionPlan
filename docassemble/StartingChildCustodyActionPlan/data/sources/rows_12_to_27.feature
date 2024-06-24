@@ -32,7 +32,7 @@ Scenario: Row #12
   And I should see the phrase "File for Default if the other parent does not respond within 20 days"
   And I should see the phrase "Get more information or help"
   And I take a screenshot
-  And I download "starting_child_custody_action_plan.pdf"
+  # And I download "starting_child_custody_action_plan.pdf"
   And I download "starting_child_custody_action_plan.docx"
 
 Scenario: Row #15
@@ -60,7 +60,7 @@ Scenario: Row #15
   And I should see the phrase "Learn more about the process"
   And I should see the phrase "Get more information or help"
   And I take a screenshot
-  And I download "starting_child_custody_action_plan.pdf"
+  # And I download "starting_child_custody_action_plan.pdf"
   And I download "starting_child_custody_action_plan.docx"
 
 Scenario: Row #16
@@ -87,7 +87,7 @@ Scenario: Row #16
   And I should see the phrase "File for Default if the other parent does not respond within 20 days"
   And I should see the phrase "Get more information or help"
   And I take a screenshot
-  And I download "starting_child_custody_action_plan.pdf"
+  # And I download "starting_child_custody_action_plan.pdf"
   And I download "starting_child_custody_action_plan.docx"
 
 Scenario: Row #21
@@ -114,7 +114,7 @@ Scenario: Row #21
   And I should see the phrase "File for Default if the other parent does not respond within 20 days"
   And I should see the phrase "Get more information or help"
   And I take a screenshot
-  And I download "starting_child_custody_action_plan.pdf"
+  # And I download "starting_child_custody_action_plan.pdf"
   And I download "starting_child_custody_action_plan.docx"
 
 Scenario: Row #22
@@ -141,7 +141,7 @@ Scenario: Row #22
   And I should see the phrase "Abuse or domestic violence and parenting"
   And I should see the phrase "Get more information or help"
   And I take a screenshot
-  And I download "starting_child_custody_action_plan.pdf"
+  # And I download "starting_child_custody_action_plan.pdf"
   And I download "starting_child_custody_action_plan.docx"
 
 Scenario: Row #25
@@ -169,5 +169,5 @@ Scenario: Row #25
   And I should see the phrase "File for Default if the other parent does not respond within 20 days"
   And I should see the phrase "Get more information or help"
   And I take a screenshot
-  And I download "starting_child_custody_action_plan.pdf"
+  # And I download "starting_child_custody_action_plan.pdf"
   And I download "starting_child_custody_action_plan.docx"

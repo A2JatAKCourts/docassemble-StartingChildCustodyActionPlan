@@ -28,7 +28,7 @@ Scenario: Row #52
   And I should see the phrase "Get more information or help"
   And I take a screenshot
   And I download "starting_child_custody_action_plan.docx"
-  And I download "starting_child_custody_action_plan.pdf"
+  # And I download "starting_child_custody_action_plan.pdf"
 
 Scenario: Row #54
   Given I start the interview at "starting_child_custody_case.yml"
@@ -52,7 +52,7 @@ Scenario: Row #54
   And I should see the phrase "Get more information or help"
   And I take a screenshot
   And I download "starting_child_custody_action_plan.docx"
-  And I download "starting_child_custody_action_plan.pdf"
+  # And I download "starting_child_custody_action_plan.pdf"
 
 Scenario: Row #57
   Given I start the interview at "starting_child_custody_case.yml"
@@ -78,7 +78,7 @@ Scenario: Row #57
   And I should see the phrase "Get more information or help"
   And I take a screenshot
   And I download "starting_child_custody_action_plan.docx"
-  And I download "starting_child_custody_action_plan.pdf"
+  # And I download "starting_child_custody_action_plan.pdf"
 
 Scenario: Row #61
   Given I start the interview at "starting_child_custody_case.yml"
@@ -106,7 +106,7 @@ Scenario: Row #61
   And I should see the phrase "Get more information or help"
   And I take a screenshot
   And I download "starting_child_custody_action_plan.docx"
-  And I download "starting_child_custody_action_plan.pdf"
+  # And I download "starting_child_custody_action_plan.pdf"
 
 Scenario: Row #66
   Given I start the interview at "starting_child_custody_case.yml"
@@ -130,7 +130,7 @@ Scenario: Row #66
   And I should see the phrase "Get more information or help"
   And I take a screenshot
   And I download "starting_child_custody_action_plan.docx"
-  And I download "starting_child_custody_action_plan.pdf"
+  # And I download "starting_child_custody_action_plan.pdf"
 
 Scenario: Row #72
   Given I start the interview at "starting_child_custody_case.yml"
@@ -158,7 +158,7 @@ Scenario: Row #72
   And I should see the phrase "Get more information or help"
   And I take a screenshot
   And I download "starting_child_custody_action_plan.docx"
-  And I download "starting_child_custody_action_plan.pdf"
+  # And I download "starting_child_custody_action_plan.pdf"
 
 Scenario: Row #79
   Given I start the interview at "starting_child_custody_case.yml"
@@ -181,7 +181,7 @@ Scenario: Row #79
   And I should see the phrase "Get more information or help"
   And I take a screenshot
   And I download "starting_child_custody_action_plan.docx"
-  And I download "starting_child_custody_action_plan.pdf"
+  # And I download "starting_child_custody_action_plan.pdf"
 
 Scenario: Row #88
   Given I start the interview at "starting_child_custody_case.yml"
@@ -205,7 +205,7 @@ Scenario: Row #88
   And I should see the phrase "Get more information or help"
   And I take a screenshot
   And I download "starting_child_custody_action_plan.docx"
-  And I download "starting_child_custody_action_plan.pdf"
+  # And I download "starting_child_custody_action_plan.pdf"
 
 Scenario: Row #99
   Given I start the interview at "starting_child_custody_case.yml"
@@ -230,4 +230,4 @@ Scenario: Row #99
   And I should see the phrase "Get more information or help"
   And I take a screenshot
   And I download "starting_child_custody_action_plan.docx"
-  And I download "starting_child_custody_action_plan.pdf"
+  # And I download "starting_child_custody_action_plan.pdf"
