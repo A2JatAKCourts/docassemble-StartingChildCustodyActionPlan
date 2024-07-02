@@ -1,15 +1,3 @@
-comment: |
-  After testing:
-  1. Replace:
-      ${ al_user_bundle.download_list_html() }
-      [get the docx file](${ docx_starting_child_custody_action_plan_attachment.docx.url_for() })
-    with:
-      ${ download_buttons_html(al_user_bundle) }
-  2. comment out:
-       script: |
-         <script>
-           Array.from(document.querySelectorAll('.al_collapse_template .collapse')).forEach((elem) => { elem.className += " show" })
-         </script>
 ---
 id: final screen
 decoration: pen-to-square
@@ -254,6 +242,20 @@ content: |
     <li>Depending on your income, you may qualify for <a href="https://alaska.freelegalanswers.org/">free legal answers</a>.</li>
     <li>Depending on your income and circumstances, you  may qualify for a free lawyer. <a href="https://www.alsc-law.org/apply-for-services/">Alaska Legal Services  Corporation</a>.</li>
   </ul>
+  
+  % if which_forms =='both':
+  <div class='step-subheading'>If you and ${ other_party_in_case } agree</div>
+  See Steps:
+  ${ uncontested_forms_idx }: Fill out the forms to start your uncontested custody case,
+  ${ file_complaint_idx }: File the original with your local court, and
+  ${ expect_after_complaint_idx }: What to expect after you file your Complaint
+  <div class='step-subheading'>If you do not agree</div>
+  See Steps:
+  ${ contested_forms_idx }: Fill out the forms to start your custody case,
+  ${ file_complaint_idx }: File the original with your local court,
+  ${ serve_complaint_idx }: Serve the complaint and summons, and
+  ${ expect_after_complaint_idx }: What to expect after you file your Complaint
+  % endif
 ---
 template: uncontested_forms_step
 subject: |
@@ -485,3 +487,4 @@ content: |
   <p><a href="http://courts.alaska.gov/shc/family/shctrial.htm">Getting Ready for a Hearing or Trial</a></p>
   <p><a href="http://courts.alaska.gov/shc/family/shcmodify.htm">Changing a Custody / Support Order</a></p>
   <p><a href="http://courts.alaska.gov/shc/family/shcenforce.htm">Enforcing a Custody Order</a></p>
+---
