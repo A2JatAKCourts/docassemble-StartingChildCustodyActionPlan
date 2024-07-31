@@ -151,9 +151,9 @@ under: |
 ---
 id: Paternity
 question: |
-  Paternity
+   Do you want your Action Plan to include information about paternity?
 subquestion: |
-  Sometimes paternity is an issue in a custody case.  Establishing paternity means legally determining the biological father of a child. Once established, the father's name can be placed on the child's birth certificate and he has legal and financial responsibility for the child. Disestablishing paternity is legally un-naming a man as the child's biological father.  Do you want your Action Plan to include information about paternity?
+  Sometimes paternity is an issue in a custody case.  Establishing paternity means legally determining the biological father of a child. Once established, the father's name can be placed on the child's birth certificate and he has legal and financial responsibility for the child. Disestablishing paternity is legally un-naming a man as the child's biological father.
 yesno: paternity
 ---
 id: Default
