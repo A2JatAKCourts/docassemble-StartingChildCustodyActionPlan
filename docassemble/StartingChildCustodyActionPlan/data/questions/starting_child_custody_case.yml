@@ -158,7 +158,7 @@ yesno: paternity
 ---
 id: Default
 question: |
-  Default
+  Do you want your Action Plan to include information about Filing for Default if the other parent does not file an Answer within 20 days?
 subquestion: |
   To start your case, you need to file a complaint with the court and send copies to the other parent.
   
@@ -168,8 +168,6 @@ subquestion: |
   
   If you get a default judgment, the case can move forward. The other parent does not need to be there and the judge may order the custody arrangement you asked for.  
   
-  
-  Do you want your Action Plan to include information about Filing for Default if the other parent does not file an Answer within 20 days?
 yesno: default_info
 ---
 id: Do you and the other parent agree
