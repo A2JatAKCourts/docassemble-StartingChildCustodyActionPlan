@@ -157,9 +157,7 @@ template: wrong_tf2
 subject: | 
   Step ${ wrong_tf2_idx }: Look at the court's self-help web pages
 content: | 
-  [Forms and Information about Child Support](https://courts.alaska.gov/shc/family/support.htm)
-  
-  [Asking for an Order / filing a motion](https://courts.alaska.gov/shc/family/motions.htm)
+  [Filing for Dissolution or Divorce - Ending Your Marriage](https://courts.alaska.gov/shc/family/shcstart.htm)
   
   [Family Law Home](https://courts.alaska.gov/shc/family)
 ---
