@@ -140,18 +140,7 @@ template: wrong_tf
 subject: |
   Step ${ wrong_tf_idx }: Try another Guided Assistant
 content: | 
-  [Starting A Case to End Your Marriage](https://docassemble.akcourts.gov/start/DivorceAndSeparation)
-  
-  [Responding if Your Spouse Starts a Case to End Your Marriage](https://docassemble.akcourts.gov/start/DivorceAndSeparation)
-  
-  [Changing your custody or Parenting Plan order](https://docassemble.akcourts.gov/start/docassemble-ChangingChildCustody)
-  
-  [Enforcing a Custody Order](https://docassemble.akcourts.gov/start/docassemble-ChangingChildCustody)
-  
-  [Asking for Child Support](https://docassemble.akcourts.gov/start/AskingForChildSupport)
-  
-  [Changing or Enforcing Child Support](https://docassemble.akcourts.gov/start/ChangingEnforcingChildSupport)
-
+  Because you are married to your children's other parent, you need a different Guided Assistant to build your Plan of Action. See [Starting A Case to End Your Marriage](https://docassemble.akcourts.gov/start/DivorceAndSeparation). 
 --- 
 template: wrong_tf2
 subject: | 
