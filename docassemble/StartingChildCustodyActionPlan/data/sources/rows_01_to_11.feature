@@ -13,7 +13,7 @@ Feature: User paths
       | var       | value   | trigger |
       | user_need | divorce |         |
     #    And I take a screenshot
-    And I should see the phrase "Try another Guided Assistant"
+    And I should see the phrase "Try another Court Guide Action Plan"
     And I should see the phrase "Look at the court’s self-help web pages"
     And I should see the phrase "Get more information or help"
     And I take a screenshot
