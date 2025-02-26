@@ -140,7 +140,7 @@ template: wrong_tf
 subject: |
   Step ${ wrong_tf_idx }: Try another Court Guide Action Plan
 content: | 
-  Because you are married to your children's other parent, you need a different Court Guide Action Plan to build your Plan of Action. See [Starting A Case to End Your Marriage](https://docassemble.akcourts.gov/start/DivorceAndSeparation). 
+  Because you are married to your children's other parent, you need a different Court Guide Action Plan. See [Starting A Case to End Your Marriage](https://docassemble.akcourts.gov/start/DivorceAndSeparation). 
 --- 
 template: wrong_tf2
 subject: | 
@@ -215,7 +215,7 @@ template: uncontested_forms_step
 subject: |
   Step ${ uncontested_forms_idx }: Fill out the forms to start your uncontested custody case
 content: |
-  <p>If you and the other parent agree on agree on everything  (a parenting plan including decision-making and schedule, paternity, and child  support), you can fill out forms to start the case together.  This is called an uncontested case.</p>
+  <p>If you and the other parent agree on everything (a parenting plan including decision-making and schedule, paternity, and child  support), you can fill out forms to start the case together.  This is called an uncontested case.</p>
   <p>You will not know your case number until you file your  documents with the court.  You can write  the case number on all your forms then.</p>
   <div class='step-subheading'>Required forms – 1 copy that both parents sign if signatures are needed</div>
   <ul>
