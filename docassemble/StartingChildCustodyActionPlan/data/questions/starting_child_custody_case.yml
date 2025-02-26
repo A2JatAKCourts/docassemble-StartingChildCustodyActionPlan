@@ -109,9 +109,9 @@ id: Ask the court for a child custody or Parenting Plan order
 question: |
   Ask the court for a child custody or Parenting Plan order
 subquestion: |
-  This Guided Assistant asks you questions and uses your answers to build a Personal Action Plan - a list of steps to help you ask the court for a Custody and Parenting Plan order in Alaska.
+  This Court Guide Action Plan asks you questions and uses your answers to build a Personal Action Plan - a list of steps to help you ask the court for a Custody and Parenting Plan order in Alaska.
 
-  If you are **married** to your children's other parent and you need to ask the court for a Parenting Plan and Child Support order, you need to start a divorce, dissolution, or legal separation case. Use the Guided Assistant, Ending your Marriage or Getting a Legal Separation.
+  If you are **married** to your children's other parent and you need to ask the court for a Parenting Plan and Child Support order, you need to start a divorce, dissolution, or legal separation case. Use the Court Guide Action Plan: [Starting a Case to End Your Marriage](https://docassemble.akcourts.gov/start/DivorceAndSeparation).
 
   What do you want to do?
 fields:
@@ -122,7 +122,7 @@ fields:
       - "I **am married** to my child's other parent and I want to ask the court for a Custody or Parenting Plan order": divorce
   - note: |
       #### <i class="fa-regular fa-lightbulb"></i> Learn more ####
-      This Guided Assistant can only give you information about the Alaska court process. To learn about custody laws in your state, find [your state's court website](https://www.ncsc.org/information-and-resources/state-court-websites).
+      This Court Guide Action Plan can only give you information about the Alaska court process. To learn about custody laws in your state, find [your state's court website](https://www.ncsc.org/information-and-resources/state-court-websites).
 ---
 id: Children live in AK?
 question: |
