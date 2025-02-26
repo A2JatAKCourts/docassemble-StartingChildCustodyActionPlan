@@ -9,7 +9,7 @@ subquestion: |
   Your Personal Action Plan for asking the court for a custody or Parenting Plan in ${ len(step_list) } steps.
   
   % if user_need == 'divorce':
-    Because you are married to your children's other parent, you need a different Guided Assistant to build your Plan of Action. See [Starting a Case to End Your Marriage](https://docassemble.akcourts.gov/start/DivorceAndSeparation). 
+    Because you are married to your children's other parent, you need a different Court Guide Action Plan to build your Plan of Action. See [Starting a Case to End Your Marriage](https://docassemble.akcourts.gov/start/DivorceAndSeparation). 
   % endif
  
   % if "docassembledev" in interview_url():
@@ -340,7 +340,7 @@ content: |
   <p><strong>People who have  experienced domestic violence can be at greater risk when they start a court  case.</strong> During this time, safety is very important. The dynamics in a relationship with domestic  violence may also cause people to feel pressured to agree to something they  don't want. If this is your situation,  these resources may help:</p>
   <ul>
     <li>Find a <a href="https://www.andvsa.org/communitys-programs">domestic violence program</a> in your area to learn about what services they offer (counseling, financial  assistance, housing and safe shelter, resources for children, and help with  court).</li>
-    <li>Ask the  court for a protective order.  You can  get information about asking for a protective order by answering more  questions.  If you want to save this  Action Plan, be sure to download, save, or print it. then return to the Guided Assist page and use  the Guided Assist search box to find &quot;Protective Orders.&quot;</li>
+    <li>Ask the  court for a protective order.  See the Court Guide Action Plan, [Protective Orders](https://docassemble.AKcourts.gov/start/ProtectiveOrders).</li>
     <li>See if  you qualify for the <a href="https://www.andvsa.org/for-survivors/">legal  assistance through your local domestic violence program</a> or <a href="https://www.alsc-law.org/apply-for-services">Alaska Legal Services</a>.</li>
   </ul>
   % if which_forms in('agree','both'): 
