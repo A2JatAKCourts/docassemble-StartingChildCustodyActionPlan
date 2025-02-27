@@ -12,7 +12,7 @@ subquestion: |
     Because you are married to your children's other parent, you need a different Court Guide Action Plan to build your Plan of Action. See [Starting a Case to End Your Marriage](https://docassemble.akcourts.gov/start/DivorceAndSeparation). 
   % endif
  
-  % if "docassembledev" in interview_url():
+  % if get_config("debug", False):
   <button id="akc_expand_all" class="btn other stuff">Expand all</button>
   <button id="akc_collapse_all" class="btn other stuff">Collapse all</button>
   % endif
@@ -24,7 +24,7 @@ subquestion: |
   
   ${ al_user_bundle.download_list_html() }
   
-  % if "docassembledev" in interview_url():
+  % if get_config("debug", False):
   [get the docx file](${ docx_starting_child_custody_action_plan_attachment.docx.url_for() })
   % endif 
 buttons:
