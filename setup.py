@@ -44,7 +44,7 @@ def find_package_data(where='.', package='', exclude=standard_exclude, exclude_d
     return out
 
 setup(name='docassemble.StartingChildCustodyActionPlan',
-      version='25.02.26',
+      version='25.03.06',
       description=('Ask the court for a child custody or Parenting Plan order'),
       long_description='# docassemble.StartingChildCustodyActionPlan\r\n\r\nAsk the court for a child custody or Parenting Plan order\r\n\r\n## Author\r\n\r\nCaroline Robinson\r\nJeannie Sato\r\n',
       long_description_content_type='text/markdown',
@@ -54,7 +54,7 @@ setup(name='docassemble.StartingChildCustodyActionPlan',
       url='https://courts.alaska.gov/shc/family/shccustody.htm',
       packages=find_packages(),
       namespace_packages=['docassemble'],
-      install_requires=['docassemble.AssemblyLine>=3.2.0', 'docassemble-AKA2JBranding @ https://github.com/A2JatAKCourts/docassemble-AKA2JBranding/archive/main.zip'],
+      install_requires=['docassemble.AKA2JBranding', 'docassemble.AssemblyLine>=3.2.0'],
       zip_safe=False,
       package_data=find_package_data(where='docassemble/StartingChildCustodyActionPlan/', package='docassemble.StartingChildCustodyActionPlan'),
      )
