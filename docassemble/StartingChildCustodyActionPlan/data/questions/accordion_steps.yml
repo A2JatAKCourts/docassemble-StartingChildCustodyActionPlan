@@ -25,7 +25,7 @@ question: |
   # <i class="fa-thin fa-list"></i>Your Court Guide Action Plan is ready!
 subquestion: |
   
-  Your Action Plan for asking the court for a custody or Parenting Plan order in ${ len(step_list) } steps.
+  #### Your Action Plan for asking the court for a custody or Parenting Plan order in ${ len(step_list) } steps
   
   % if user_need == 'divorce':
     Because you are married to your children's other parent, you need a different Court Guide Action Plan to build your Plan of Action. See [Starting a Case to End Your Marriage](https://docassemble.akcourts.gov/start/DivorceAndSeparation). 

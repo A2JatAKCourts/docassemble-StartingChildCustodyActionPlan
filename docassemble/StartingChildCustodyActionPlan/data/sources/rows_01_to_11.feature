@@ -13,7 +13,7 @@ Scenario: Row #2
     | var       | value   | trigger | 
     | user_need | divorce |         | 
 #    And I take a screenshot
-    And I should see the phrase "Your Action Plan for asking the court for a custody or Parenting Plan order in 3 Steps"
+    And I should see the phrase "Your Action Plan for asking the court for a custody or Parenting Plan order in 3 steps"
     And I should see the phrase "Try another Court Guide Action Plan"
     And I should see the phrase "Look at the court’s self-help web pages"
     And I should see the phrase "Get more information or help"
@@ -30,7 +30,7 @@ Scenario: Row #3
     | jurisdiction                  | False   |         | 
     | add_jurisdiction_info_to_plan | stop    |         | 
 #    And I take a screenshot
-    And I should see the phrase "Your Action Plan for asking the court for a custody or Parenting Plan order in 2 Steps"
+    And I should see the phrase "Your Action Plan for asking the court for a custody or Parenting Plan order in 2 steps"
     And I should see the phrase "Check if Alaska has jurisdiction"
     And I should see the phrase "Get more information or help"
     And I take a screenshot
@@ -51,7 +51,7 @@ Scenario: Row #4
     | default_info                  | True    |         | 
     | domestic_violence             | True    |         | 
 #    And I take a screenshot
-    And I should see the phrase "Your Action Plan for asking the court for a custody or Parenting Plan order in 11 Steps"
+    And I should see the phrase "Your Action Plan for asking the court for a custody or Parenting Plan order in 11 steps"
     And I should see the phrase "Check if Alaska has jurisdiction"
     And I should see the phrase "Starting a case when you do not know where the other parent is"
     And I should see the phrase "Learn about paternity"
@@ -81,7 +81,7 @@ Scenario: Row #5
     | default_info                  | True    |         | 
     | domestic_violence             | False   |         | 
 #    And I take a screenshot
-    And I should see the phrase "Your Action Plan for asking the court for a custody or Parenting Plan order in 10 Steps"
+    And I should see the phrase "Your Action Plan for asking the court for a custody or Parenting Plan order in 10 steps"
     And I should see the phrase "Check if Alaska has jurisdiction"
     And I should see the phrase "Starting a case when you do not know where the other parent is"
     And I should see the phrase "Learn about paternity"
@@ -110,7 +110,7 @@ Scenario: Row #6
     | default_info                  | False   |         | 
     | domestic_violence             | True    |         | 
 #    And I take a screenshot
-    And I should see the phrase "Your Action Plan for asking the court for a custody or Parenting Plan order in 10 Steps"
+    And I should see the phrase "Your Action Plan for asking the court for a custody or Parenting Plan order in 10 steps"
     And I should see the phrase "Check if Alaska has jurisdiction"
     And I should see the phrase "Starting a case when you do not know where the other parent is"
     And I should see the phrase "Learn about paternity"
@@ -137,7 +137,7 @@ Scenario: Row #7
     | default_info                  | False   |         | 
     | domestic_violence             | False   |         | 
 #    And I take a screenshot
-    And I should see the phrase "Your Action Plan for asking the court for a custody or Parenting Plan order in 9 Steps"
+    And I should see the phrase "Your Action Plan for asking the court for a custody or Parenting Plan order in 9 steps"
     And I should see the phrase "Check if Alaska has jurisdiction"
     And I should see the phrase "Starting a case when you do not know where the other parent is"
     And I should see the phrase "Learn about paternity"
@@ -165,7 +165,7 @@ Scenario: Row #8
     | default_info                  | True      |         | 
     | domestic_violence             | True      |         | 
 #    And I take a screenshot
-    And I should see the phrase "Your Action Plan for asking the court for a custody or Parenting Plan order in 12 Steps"
+    And I should see the phrase "Your Action Plan for asking the court for a custody or Parenting Plan order in 12 steps"
     And I should see the phrase "Check if Alaska has jurisdiction"
     And I should see the phrase "Starting a case when you do not know where the other parent is"
     And I should see the phrase "Learn about paternity"
@@ -195,7 +195,7 @@ Scenario: Row #9
     | default_info                  | True      |         | 
     | domestic_violence             | False     |         | 
 #    And I take a screenshot
-    And I should see the phrase "Your Action Plan for asking the court for a custody or Parenting Plan order in 11 Steps"
+    And I should see the phrase "Your Action Plan for asking the court for a custody or Parenting Plan order in 11 steps"
     And I should see the phrase "Check if Alaska has jurisdiction"
     And I should see the phrase "Starting a case when you do not know where the other parent is"
     And I should see the phrase "Learn about paternity"
@@ -224,7 +224,7 @@ Scenario: Row #10
     | default_info                  | False     |         | 
     | domestic_violence             | True      |         | 
 #    And I take a screenshot
-    And I should see the phrase "Your Action Plan for asking the court for a custody or Parenting Plan order in 11 Steps"
+    And I should see the phrase "Your Action Plan for asking the court for a custody or Parenting Plan order in 11 steps"
     And I should see the phrase "Check if Alaska has jurisdiction"
     And I should see the phrase "Starting a case when you do not know where the other parent is"
     And I should see the phrase "Learn about paternity"
@@ -253,7 +253,7 @@ Scenario: Row #11
     | default_info                  | False     |         | 
     | domestic_violence             | True      |         | 
 #    And I take a screenshot
-    And I should see the phrase "Your Action Plan for asking the court for a custody or Parenting Plan order in 11 Steps"
+    And I should see the phrase "Your Action Plan for asking the court for a custody or Parenting Plan order in 11 steps"
     And I should see the phrase "Check if Alaska has jurisdiction"
     And I should see the phrase "Starting a case when you do not know where the other parent is"
     And I should see the phrase "Learn about paternity"
