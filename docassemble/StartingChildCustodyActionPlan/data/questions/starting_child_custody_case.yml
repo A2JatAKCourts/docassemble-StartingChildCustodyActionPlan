@@ -25,7 +25,7 @@ data:
   short title: >-
     Starting a child custody case
   description: |-
-    A Personal Action Plan for asking the court for a custody or Parenting Plan order
+    An Action Plan for asking the court for a custody or Parenting Plan order
   allowed courts: []
   categories: []
   typical role: "plaintiff"
@@ -46,7 +46,7 @@ code: |
   github_repo_name =  'docassemble-StartingChildCustodyCaseIssues'
 ---
 code: |
-  interview_short_title = "Get a Personal Action Plan for asking the court for a child custody or Parenting Plan order"
+  interview_short_title = "Get an Action Plan for asking the court for a child custody or Parenting Plan order"
 ---
 code: |
   al_form_type = "other" 
@@ -109,7 +109,7 @@ id: Ask the court for a child custody or Parenting Plan order
 question: |
   Ask the court for a child custody or Parenting Plan order
 subquestion: |
-  This Court Guide Action Plan asks you questions and uses your answers to build a Personal Action Plan - a list of steps to help you ask the court for a Custody and Parenting Plan order in Alaska.
+  This Court Guide Action Plan asks you questions and uses your answers to build a list of steps to help you ask the court for a Custody and Parenting Plan order in Alaska.
 
   If you are **married** to your children's other parent and you need to ask the court for a Parenting Plan and Child Support order, you need to start a divorce, dissolution, or legal separation case. Use the Court Guide Action Plan: [Starting a Case to End Your Marriage](https://docassemble.akcourts.gov/start/DivorceAndSeparation).
 
