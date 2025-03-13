@@ -17,6 +17,7 @@ Scenario: Row #12
     | default_info                  | True    |         |
     | domestic_violence             | True    |         |
   #    And I take a screenshot
+  And I should see the phrase "Your Action Plan for asking the court for a custody or Parenting Plan order in 14 steps"
   And I should see the phrase "Check if Alaska has jurisdiction"
   And I should see the phrase "Starting a case when you do not know where the other parent is"
   And I should see the phrase "Learn about paternity"
@@ -34,7 +35,8 @@ Scenario: Row #12
   And I take a screenshot
   And I download "starting_child_custody_action_plan.pdf"
   And I download "starting_child_custody_action_plan.docx"
-
+  
+@row15
 Scenario: Row #15
   Given I start the interview at "starting_child_custody_case.yml"
   And I get to the question id "final screen" with this data:
@@ -48,8 +50,10 @@ Scenario: Row #15
     | default_info                  | False   |         |
     | domestic_violence             | False   |         |
   #    And I take a screenshot
+  And I should see the phrase "Your Action Plan for asking the court for a custody or Parenting Plan order in 12 steps"
   And I should see the phrase "Check if Alaska has jurisdiction"
   And I should see the phrase "Starting a case when you do not know where the other parent is"
+  And I should see the phrase "Talk to the other parent to see if you agree"
   And I should see the phrase "Learn about paternity"
   And I should see the phrase "Fill out the forms to start your uncontested custody case"
   And I should see the phrase "Fill out the forms to start your custody case"
@@ -63,6 +67,7 @@ Scenario: Row #15
   And I download "starting_child_custody_action_plan.pdf"
   And I download "starting_child_custody_action_plan.docx"
 
+@row16
 Scenario: Row #16
   Given I start the interview at "starting_child_custody_case.yml"
   And I get to the question id "final screen" with this data:
@@ -76,6 +81,7 @@ Scenario: Row #16
     | default_info                  | True    |         |
     | domestic_violence             | True    |         |
   #    And I take a screenshot
+  And I should see the phrase "Your Action Plan for asking the court for a custody or Parenting Plan order in 10 steps"
   And I should see the phrase "Check if Alaska has jurisdiction"
   And I should see the phrase "Starting a case when you do not know where the other parent is"
   And I should see the phrase "Talk to the other parent to see if you agree"
@@ -103,6 +109,7 @@ Scenario: Row #21
     | default_info                  | True      |         |
     | domestic_violence             | False     |         |
   #    And I take a screenshot
+  And I should see the phrase "Your Action Plan for asking the court for a custody or Parenting Plan order in 10 steps"
   And I should see the phrase "Check if Alaska has jurisdiction"
   And I should see the phrase "Starting a case when you do not know where the other parent is"
   And I should see the phrase "Fill out the forms to start your custody case"
@@ -130,6 +137,7 @@ Scenario: Row #22
     | default_info                  | False     |         |
     | domestic_violence             | True      |         |
   #    And I take a screenshot
+  And I should see the phrase "Your Action Plan for asking the court for a custody or Parenting Plan order in 10 steps"
   And I should see the phrase "Check if Alaska has jurisdiction"
   And I should see the phrase "Starting a case when you do not know where the other parent is"
   And I should see the phrase "Fill out the forms to start your custody case"
@@ -157,6 +165,7 @@ Scenario: Row #25
     | default_info                  | True    |         |
     | domestic_violence             | False   |         |
   #    And I take a screenshot
+  And I should see the phrase "Your Action Plan for asking the court for a custody or Parenting Plan order in 12 steps"
   And I should see the phrase "Check if Alaska has jurisdiction"
   And I should see the phrase "Starting a case when you do not know where the other parent is"
   And I should see the phrase "Fill out the forms to start your uncontested custody case"

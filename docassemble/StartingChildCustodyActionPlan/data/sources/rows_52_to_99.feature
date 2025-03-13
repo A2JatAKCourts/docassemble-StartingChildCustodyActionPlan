@@ -16,6 +16,7 @@ Scenario: Row #52
     | default_info      | True    |         |
     | domestic_violence | True    |         |
   #    And I take a screenshot
+  And I should see the phrase "Your Action Plan for asking the court for a custody or Parenting Plan order in 10 steps"
   And I should see the phrase "Starting a case when you do not know where the other parent is"
   And I should see the phrase "Learn about paternity"
   And I should see the phrase "Talk to the other parent to see if you agree"
@@ -42,6 +43,7 @@ Scenario: Row #54
     | default_info      | False   |         |
     | domestic_violence | True    |         |
   #    And I take a screenshot
+  And I should see the phrase "Your Action Plan for asking the court for a custody or Parenting Plan order in 9 steps"
   And I should see the phrase "Learn about paternity"
   And I should see the phrase "Talk to the other parent to see if you agree"
   And I should see the phrase "Fill out the forms to start your uncontested custody case"
@@ -66,6 +68,7 @@ Scenario: Row #57
     | default_info      | True      |         |
     | domestic_violence | False     |         |
   #    And I take a screenshot
+  And I should see the phrase "Your Action Plan for asking the court for a custody or Parenting Plan order in 10 steps"
   And I should see the phrase "Starting a case when you do not know where the other parent is"
   And I should see the phrase "Learn about paternity"
   And I should see the phrase "Fill out the forms to start your custody case"
@@ -92,6 +95,7 @@ Scenario: Row #61
     | default_info      | True    |         |
     | domestic_violence | False   |         |
   #    And I take a screenshot
+  And I should see the phrase "Your Action Plan for asking the court for a custody or Parenting Plan order in 12 steps"
   And I should see the phrase "Starting a case when you do not know where the other parent is"
   And I should see the phrase "Learn about paternity"
   And I should see the phrase "Talk to the other parent to see if you agree"
@@ -120,6 +124,7 @@ Scenario: Row #66
     | default_info      | False   |         |
     | domestic_violence | True    |         |
   #    And I take a screenshot
+  And I should see the phrase "Your Action Plan for asking the court for a custody or Parenting Plan order in 8 steps"
   And I should see the phrase "Starting a case when you do not know where the other parent is"
   And I should see the phrase "Talk to the other parent to see if you agree"
   And I should see the phrase "Fill out the forms to start your uncontested custody case"
@@ -144,6 +149,7 @@ Scenario: Row #72
     | default_info      | True    |         |
     | domestic_violence | True    |         |
   #    And I take a screenshot
+  And I should see the phrase "Your Action Plan for asking the court for a custody or Parenting Plan order in 12 steps"
   And I should see the phrase "Starting a case when you do not know where the other parent is"
   And I should see the phrase "Talk to the other parent to see if you agree"
   And I should see the phrase "Fill out the forms to start your uncontested custody case"
@@ -172,6 +178,7 @@ Scenario: Row #79
     | default_info      | False   |         |
     | domestic_violence | False   |         |
   #    And I take a screenshot
+  And I should see the phrase "Your Action Plan for asking the court for a custody or Parenting Plan order in 7 steps"
   And I should see the phrase "Learn about paternity"
   And I should see the phrase "Talk to the other parent to see if you agree"
   And I should see the phrase "Fill out the forms to start your uncontested custody case"
@@ -195,6 +202,7 @@ Scenario: Row #88
     | default_info      | True    |         |
     | domestic_violence | True    |         |
   #    And I take a screenshot
+  And I should see the phrase "Your Action Plan for asking the court for a custody or Parenting Plan order in 8 steps"
   And I should see the phrase "Talk to the other parent to see if you agree"
   And I should see the phrase "Fill out the forms to start your uncontested custody case"
   And I should see the phrase "File the original with your local court"
@@ -218,7 +226,8 @@ Scenario: Row #99
     | which_forms       | both    |         |
     | default_info      | False   |         |
     | domestic_violence | False   |         |
-  #    And I take a screenshot
+  #    And I take a screenshot  
+  And I should see the phrase "Your Action Plan for asking the court for a custody or Parenting Plan order in 9 steps"
   And I should see the phrase "Talk to the other parent to see if you agree"
   And I should see the phrase "Fill out the forms to start your uncontested custody case"
   And I should see the phrase "Fill out the forms to start your custody case"

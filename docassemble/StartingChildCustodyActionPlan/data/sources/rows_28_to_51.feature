@@ -17,6 +17,7 @@ Scenario: Row #28
     | default_info                  | True    |         | 
     | domestic_violence             | True    |         | 
 #    And I take a screenshot
+  And I should see the phrase "Your Action Plan for asking the court for a custody or Parenting Plan order in 10 steps"
     And I should see the phrase "Check if Alaska has jurisdiction"
     And I should see the phrase "Learn about paternity"
     And I should see the phrase "Talk to the other parent to see if you agree"
@@ -44,6 +45,7 @@ Scenario: Row #30
     | default_info                  | False   |         | 
     | domestic_violence             | True    |         | 
 #    And I take a screenshot
+  And I should see the phrase "Your Action Plan for asking the court for a custody or Parenting Plan order in 9 steps"
     And I should see the phrase "Check if Alaska has jurisdiction"
     And I should see the phrase "Learn about paternity"
     And I should see the phrase "Fill out the forms to start your uncontested custody case"
@@ -69,6 +71,7 @@ Scenario: Row #34
     | default_info                  | False     |         | 
     | domestic_violence             | True      |         | 
 #    And I take a screenshot
+  And I should see the phrase "Your Action Plan for asking the court for a custody or Parenting Plan order in 9 steps"
     And I should see the phrase "Check if Alaska has jurisdiction"
     And I should see the phrase "Fill out the forms to start your custody case"
     And I should see the phrase "File the original with your local court"
@@ -95,6 +98,7 @@ Scenario: Row #40
     | default_info                  | True    |         | 
     | domestic_violence             | True    |         | 
 #    And I take a screenshot
+  And I should see the phrase "Your Action Plan for asking the court for a custody or Parenting Plan order in 9 steps"
     And I should see the phrase "Check if Alaska has jurisdiction"
     And I should see the phrase "Fill out the forms to start your uncontested custody case"
     And I should see the phrase "File the original with your local court"
@@ -120,6 +124,7 @@ Scenario: Row #47
     | default_info                  | False     |         | 
     | domestic_violence             | False     |         | 
 #    And I take a screenshot
+  And I should see the phrase "Your Action Plan for asking the court for a custody or Parenting Plan order in 8 steps"
     And I should see the phrase "Check if Alaska has jurisdiction"
     And I should see the phrase "Fill out the forms to start your custody case"
     And I should see the phrase "File the original with your local court"
@@ -145,6 +150,7 @@ Scenario: Row #50
     | default_info                  | True    |         | 
     | domestic_violence             | False   |         | 
 #    And I take a screenshot
+    And I should see the phrase "Your Action Plan for asking the court for a custody or Parenting Plan order in 11 steps"
     And I should see the phrase "Check if Alaska has jurisdiction"
     And I should see the phrase "Fill out the forms to start your uncontested custody case"
     And I should see the phrase "Fill out the forms to start your custody case"
